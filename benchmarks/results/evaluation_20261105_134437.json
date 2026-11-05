@@ -1,0 +1,180 @@
+{
+  "evaluation_timestamp": "2026-11-05T13:44:37.266496",
+  "dataset_version": "1.0",
+  "inference_mode": "live",
+  "summary": {
+    "total_cases": 1,
+    "execution_reliable_cases": 1,
+    "execution_reliability_rate": 1.0,
+    "fully_valid_cases": 1,
+    "structured_output_validity_rate": 1.0,
+    "consistent_cases": 1,
+    "outlook_consistency_rate": 1.0,
+    "agent_failure_count": 0,
+    "outer_execution_failure_count": 0
+  },
+  "results": [
+    {
+      "case_id": "AAPL",
+      "ticker": "AAPL",
+      "scenario_category": "positive",
+      "started_at": "2026-11-05T13:44:35.566162",
+      "execution_reliable": true,
+      "assessment_validity": {
+        "valuation": true,
+        "risk": true,
+        "momentum": true
+      },
+      "outlook_consistent": true,
+      "agent_errors": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "valuation": {
+        "ticker": "AAPL",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "trailing_pe: 38.920937",
+          "price_to_book: 45.314407",
+          "enterprise_to_ebitda: 29.755"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No peer or sector benchmarks provided",
+          "No additional financial metrics or qualitative data available"
+        ],
+        "reasoning": "The supplied data includes only a few valuation ratios for Apple Inc. Without comparable figures from peers or sector averages, it is impossible to assess whether these ratios indicate a cheap or expensive valuation. Therefore, a reliable stance on the stock\u2019s value cannot be established based solely on the provided evidence."
+      },
+      "risk": {
+        "ticker": "AAPL",
+        "risk_level": "high",
+        "evidence": [
+          "beta 1.089",
+          "debt_to_equity 71.468",
+          "historical close prices ranging from ~260 to ~350 over the period"
+        ],
+        "assumptions": [
+          "beta reflects sensitivity to market movements",
+          "debt_to_equity indicates leverage level",
+          "price variability reflects market risk"
+        ],
+        "limitations": [
+          "no industry benchmark for debt-to-equity",
+          "no trend or earnings data",
+          "no liquidity or cash flow information"
+        ],
+        "reasoning": "The beta of 1.089 suggests the stock is slightly more volatile than the market, indicating moderate market risk. The debt-to-equity ratio of 71.468 is extremely high, implying significant leverage and potential financial distress risk. Historical price data shows a range of roughly $90 over the period, indicating moderate price volatility. Combining a high leverage figure with market sensitivity leads to a high overall risk assessment. However, the lack of industry context and additional financial metrics limits the certainty of this conclusion."
+      },
+      "momentum": {
+        "ticker": "AAPL",
+        "stance": "positive",
+        "evidence": [
+          "Current close (349.51) is above 20\u2011day MA (342.91), 50\u2011day MA (334.84), and 200\u2011day MA (297.58), indicating short\u2011term bullish trend.",
+          "20\u2011day price change of +3.81% and 50\u2011day change of +12.78% show recent upward momentum.",
+          "Average 20\u2011day volume 46.3M versus latest volume 89.5M reflects a significant volume spike, supporting the price move."
+        ],
+        "assumptions": [],
+        "limitations": [
+          "Analysis is based solely on technical indicators; no fundamental or news factors considered."
+        ],
+        "reasoning": "All supplied indicators point to a bullish short\u2011term and medium\u2011term momentum for AAPL. The price is above key moving averages, recent price gains are strong, and volume has increased markedly, reinforcing the upward trend. No conflicting signals are present. Therefore, the stance is positive."
+      },
+      "disagreement": {
+        "classification": "evidence_gap",
+        "conflicting_agents": [],
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ],
+        "explanation": "One or more dimensions lack sufficient evidence."
+      },
+      "evidence_quality": {
+        "level": "partial",
+        "usable_dimensions": [
+          "risk",
+          "momentum"
+        ],
+        "insufficient_dimensions": [
+          "valuation"
+        ],
+        "failed_dimensions": [],
+        "explanation": "2 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+      },
+      "analytical_agreement": {
+        "classification": "limited",
+        "directional_agents": [
+          "momentum"
+        ],
+        "positive_agents": [
+          "momentum"
+        ],
+        "negative_agents": [],
+        "explanation": "Only one directional assessment is available."
+      },
+      "execution_reliability_report": {
+        "successful_agents": [
+          "valuation",
+          "risk",
+          "momentum"
+        ],
+        "failed_agents": [],
+        "success_count": 3,
+        "total_agents": 3,
+        "reliability": "complete",
+        "explanation": "3 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+      },
+      "final_outlook": {
+        "ticker": "AAPL",
+        "dimensions": {
+          "valuation": "insufficient_evidence",
+          "risk": "high",
+          "momentum": "positive"
+        },
+        "overall_outlook": "partial_directional",
+        "interpretation": "One dimension provides a directional signal; the other does not establish direction.",
+        "evidence_quality": {
+          "level": "partial",
+          "usable_dimensions": [
+            "risk",
+            "momentum"
+          ],
+          "insufficient_dimensions": [
+            "valuation"
+          ],
+          "failed_dimensions": [],
+          "explanation": "2 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "limited",
+          "directional_agents": [
+            "momentum"
+          ],
+          "positive_agents": [
+            "momentum"
+          ],
+          "negative_agents": [],
+          "explanation": "Only one directional assessment is available."
+        },
+        "execution_reliability": {
+          "successful_agents": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "failed_agents": [],
+          "success_count": 3,
+          "total_agents": 3,
+          "reliability": "complete",
+          "explanation": "3 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        },
+        "disagreement": "evidence_gap",
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ]
+      },
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,987 @@
+{
+  "evaluation_type": "manual_review",
+  "scoring_scale": "0-5",
+  "cases": [
+    {
+      "case_id": "AAPL",
+      "ticker": "AAPL",
+      "scenario_category": "positive",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E and P/B indicate valuation sensitivity"
+        ],
+        "risk": [
+          "Beta indicates moderate market sensitivity"
+        ],
+        "momentum": [
+          "Price above MA20, MA50, and MA200; positive 20d and 50d returns"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Constructive historical momentum with valuation caution"
+        ],
+        "unacceptable_claims": [
+          "Guaranteed future appreciation",
+          "Undocumented peer valuation claims"
+        ],
+        "limitations_to_acknowledge": [
+          "No peer benchmarks or forward earnings estimates"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": {
+          "ticker": "AAPL",
+          "stance": "insufficient_evidence",
+          "evidence": [
+            "trailing_pe: 38.920937",
+            "price_to_book: 45.314407",
+            "enterprise_to_ebitda: 29.755"
+          ],
+          "assumptions": [],
+          "limitations": [
+            "No peer or sector benchmarks provided",
+            "No additional valuation metrics or financial data supplied"
+          ],
+          "reasoning": "The available data includes only a few valuation ratios for Apple Inc. Without comparable figures from peers or industry averages, it is impossible to assess whether these ratios indicate a cheap or expensive valuation. Therefore, the evidence is insufficient to form a definitive stance on the stock\u2019s value."
+        },
+        "risk": {
+          "ticker": "AAPL",
+          "risk_level": "moderate",
+          "evidence": [
+            "beta 1.089 indicates sensitivity above market average",
+            "debt_to_equity 71.468 suggests significant leverage",
+            "historical close prices show daily swings of several percent"
+          ],
+          "assumptions": [
+            "debt_to_equity is interpreted as a high leverage ratio relative to peers",
+            "beta reflects systematic risk exposure",
+            "price swings reflect market volatility"
+          ],
+          "limitations": [
+            "no industry benchmark for debt_to_equity",
+            "no absolute volatility metrics derived",
+            "no macroeconomic or company-specific events provided"
+          ],
+          "reasoning": "The beta above 1 signals higher systematic risk, and the debt_to_equity figure points to elevated leverage, both of which raise risk. Historical price data shows notable daily fluctuations, supporting a view of moderate volatility. However, without industry context or additional risk metrics, the assessment remains cautious, leading to a moderate risk classification."
+        },
+        "momentum": {
+          "ticker": "AAPL",
+          "stance": "positive",
+          "evidence": [
+            "Current close above 20\u2011day MA (349.51\u202f>\u202f342.91)",
+            "Current close above 50\u2011day MA (349.51\u202f>\u202f334.84)",
+            "Current close above 200\u2011day MA (349.51\u202f>\u202f297.58)",
+            "20\u2011day price change +3.81%",
+            "50\u2011day price change +12.78%",
+            "Latest volume 89.5\u202fM > 20\u2011day average volume 46.3\u202fM"
+          ],
+          "assumptions": [],
+          "limitations": [
+            "Analysis limited to supplied technical indicators; no fundamental or news context considered"
+          ],
+          "reasoning": "All short\u2011term and longer\u2011term moving\u2011average relationships are bullish, and recent price gains and volume expansion reinforce positive momentum. No conflicting signals are present, so the evidence supports a positive stance."
+        }
+      },
+      "quality_reports": {
+        "evidence_quality": {
+          "level": "partial",
+          "usable_dimensions": [
+            "risk",
+            "momentum"
+          ],
+          "insufficient_dimensions": [
+            "valuation"
+          ],
+          "failed_dimensions": [],
+          "explanation": "2 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "limited",
+          "directional_agents": [
+            "momentum"
+          ],
+          "positive_agents": [
+            "momentum"
+          ],
+          "negative_agents": [],
+          "explanation": "Only one directional assessment is available."
+        },
+        "execution_reliability": {
+          "successful_agents": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "failed_agents": [],
+          "success_count": 3,
+          "total_agents": 3,
+          "reliability": "complete",
+          "explanation": "3 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        }
+      },
+      "automated_checks": {
+        "execution_reliable": true,
+        "assessment_validity": {
+          "valuation": true,
+          "risk": true,
+          "momentum": true
+        },
+        "outlook_consistent": true
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    },
+    {
+      "case_id": "MSFT",
+      "ticker": "MSFT",
+      "scenario_category": "positive",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E provides valuation context but no standalone fair value"
+        ],
+        "risk": [
+          "Beta indicates market sensitivity"
+        ],
+        "momentum": [
+          "Price above moving averages; positive 20d and 50d returns"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Constructive historical momentum"
+        ],
+        "unacceptable_claims": [
+          "Guaranteed future appreciation"
+        ],
+        "limitations_to_acknowledge": [
+          "No peer or historical valuation benchmark"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": {
+          "ticker": "MSFT",
+          "stance": "insufficient_evidence",
+          "evidence": [
+            "Trailing P/E: 29.00835",
+            "Price-to-Book: 8.773342",
+            "Enterprise-to-EBITDA: 20.411"
+          ],
+          "assumptions": [],
+          "limitations": [
+            "No peer or sector benchmarks provided to assess relative valuation",
+            "Missing additional financial metrics that could inform valuation"
+          ],
+          "reasoning": "The supplied data includes only a few valuation ratios for Microsoft. Without comparable benchmarks or additional financial context, it is not possible to determine whether the stock is undervalued, overvalued, or fairly priced. Therefore, the evidence is insufficient to establish a valuation stance."
+        },
+        "risk": {
+          "ticker": "MSFT",
+          "risk_level": "moderate",
+          "evidence": [
+            "beta 1.045 indicates market sensitivity close to 1",
+            "debt_to_equity 28.465 suggests high leverage",
+            "historical close prices range from ~500 to ~350 over the period, showing price volatility"
+          ],
+          "assumptions": [
+            "High debt-to-equity is interpreted as higher financial risk",
+            "Beta near 1 is taken as moderate market risk",
+            "Price range is used as a proxy for historical volatility"
+          ],
+          "limitations": [
+            "No industry benchmark for debt-to-equity",
+            "No comparison of beta to sector average",
+            "No other risk metrics (e.g., liquidity, earnings stability) provided",
+            "Future outlook and macroeconomic factors absent"
+          ],
+          "reasoning": "The company\u2019s beta indicates it moves in line with the overall market, implying moderate systematic risk. However, the debt-to-equity ratio is unusually high, pointing to significant leverage and potential financial strain. Historical price data shows a wide range, suggesting some volatility. Combining these factors, the risk profile is considered moderate, with a notable concern for financial leverage."
+        },
+        "momentum": null
+      },
+      "quality_reports": {
+        "evidence_quality": {
+          "level": "partial",
+          "usable_dimensions": [
+            "risk"
+          ],
+          "insufficient_dimensions": [
+            "valuation"
+          ],
+          "failed_dimensions": [
+            "momentum"
+          ],
+          "explanation": "1 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "unestablished",
+          "directional_agents": [],
+          "positive_agents": [],
+          "negative_agents": [],
+          "explanation": "No usable directional assessments are available."
+        },
+        "execution_reliability": {
+          "successful_agents": [
+            "valuation",
+            "risk"
+          ],
+          "failed_agents": [
+            "momentum"
+          ],
+          "success_count": 2,
+          "total_agents": 3,
+          "reliability": "partial",
+          "explanation": "2 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        }
+      },
+      "automated_checks": {
+        "execution_reliable": false,
+        "assessment_validity": {
+          "valuation": true,
+          "risk": true,
+          "momentum": false
+        },
+        "outlook_consistent": true
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    },
+    {
+      "case_id": "KO",
+      "ticker": "KO",
+      "scenario_category": "positive",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E requires contextual comparison"
+        ],
+        "risk": [
+          "Low beta indicates lower historical market sensitivity; D/E requires industry context"
+        ],
+        "momentum": [
+          "Positive 20d and 50d returns; price above moving averages"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Constructive historical momentum with contextual risk"
+        ],
+        "unacceptable_claims": [
+          "Claiming low beta means no risk"
+        ],
+        "limitations_to_acknowledge": [
+          "No peer benchmark; leverage interpretation is industry-dependent"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": {
+          "ticker": "KO",
+          "stance": "insufficient_evidence",
+          "evidence": [
+            "trailing_pe: 28.259586",
+            "price_to_book: 11.027973",
+            "enterprise_to_ebitda: 25.233"
+          ],
+          "assumptions": [
+            "No peer or sector benchmarks provided"
+          ],
+          "limitations": [
+            "Cannot determine relative valuation without benchmark data",
+            "Missing additional financial metrics"
+          ],
+          "reasoning": "The available data includes only a few valuation ratios for Coca\u2011Cola. Without comparable figures from peers or sector averages, it is impossible to assess whether these ratios indicate a cheap or expensive valuation. Therefore, the evidence is insufficient to support a positive, negative, or neutral stance."
+        },
+        "risk": null,
+        "momentum": {
+          "ticker": "KO",
+          "stance": "positive",
+          "evidence": [
+            "Current close (95.80) is above the 20\u2011day MA (92.50), 50\u2011day MA (89.56), and 200\u2011day MA (81.77), indicating an uptrend.",
+            "Price increased 11.63% over the last 20 days and 5.16% over the last 50 days, showing recent upward momentum.",
+            "Average 20\u2011day volume is 17.44M and the latest volume is 27.08M, a volume spike that supports the price move."
+          ],
+          "assumptions": [],
+          "limitations": [
+            "Analysis is based solely on short\u2011term technical indicators; no fundamental data or catalysts are considered."
+          ],
+          "reasoning": "All supplied indicators point to a bullish short\u2011term trend: the price is above all relevant moving averages, recent price gains are strong, and volume has increased. No conflicting signals are present. Therefore the momentum assessment is positive."
+        }
+      },
+      "quality_reports": {
+        "evidence_quality": {
+          "level": "partial",
+          "usable_dimensions": [
+            "momentum"
+          ],
+          "insufficient_dimensions": [
+            "valuation"
+          ],
+          "failed_dimensions": [
+            "risk"
+          ],
+          "explanation": "1 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "limited",
+          "directional_agents": [
+            "momentum"
+          ],
+          "positive_agents": [
+            "momentum"
+          ],
+          "negative_agents": [],
+          "explanation": "Only one directional assessment is available."
+        },
+        "execution_reliability": {
+          "successful_agents": [
+            "valuation",
+            "momentum"
+          ],
+          "failed_agents": [
+            "risk"
+          ],
+          "success_count": 2,
+          "total_agents": 3,
+          "reliability": "partial",
+          "explanation": "2 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        }
+      },
+      "automated_checks": {
+        "execution_reliable": false,
+        "assessment_validity": {
+          "valuation": true,
+          "risk": false,
+          "momentum": true
+        },
+        "outlook_consistent": true
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    },
+    {
+      "case_id": "GOOGL",
+      "ticker": "GOOGL",
+      "scenario_category": "negative",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E alone does not establish undervaluation"
+        ],
+        "risk": [
+          "Beta indicates market sensitivity"
+        ],
+        "momentum": [
+          "Negative 20d and 50d returns; price below moving averages"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Deteriorating historical momentum"
+        ],
+        "unacceptable_claims": [
+          "Claiming price decline guarantees future losses"
+        ],
+        "limitations_to_acknowledge": [
+          "No causal explanation for price decline"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": {
+          "ticker": "GOOGL",
+          "stance": "insufficient_evidence",
+          "evidence": [
+            "trailing_pe: 15.0877285",
+            "price_to_book: 5.385863",
+            "enterprise_to_ebitda: 18.626"
+          ],
+          "assumptions": [],
+          "limitations": [
+            "No peer or sector benchmarks provided",
+            "No additional valuation metrics or financial data supplied"
+          ],
+          "reasoning": "The available data includes only a few valuation ratios for Alphabet Inc. Without comparable metrics from peers or sector averages, it is impossible to assess whether these ratios indicate a cheap or expensive valuation. Therefore, the evidence is insufficient to form a definitive stance on the stock's value."
+        },
+        "risk": null,
+        "momentum": null
+      },
+      "quality_reports": {
+        "evidence_quality": {
+          "level": "poor",
+          "usable_dimensions": [],
+          "insufficient_dimensions": [
+            "valuation"
+          ],
+          "failed_dimensions": [
+            "risk",
+            "momentum"
+          ],
+          "explanation": "0 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "unestablished",
+          "directional_agents": [],
+          "positive_agents": [],
+          "negative_agents": [],
+          "explanation": "No usable directional assessments are available."
+        },
+        "execution_reliability": {
+          "successful_agents": [
+            "valuation"
+          ],
+          "failed_agents": [
+            "risk",
+            "momentum"
+          ],
+          "success_count": 1,
+          "total_agents": 3,
+          "reliability": "partial",
+          "explanation": "1 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        }
+      },
+      "automated_checks": {
+        "execution_reliable": false,
+        "assessment_validity": {
+          "valuation": true,
+          "risk": false,
+          "momentum": false
+        },
+        "outlook_consistent": true
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    },
+    {
+      "case_id": "INTC",
+      "ticker": "INTC",
+      "scenario_category": "negative",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E is missing and cannot be assessed"
+        ],
+        "risk": [
+          "High beta indicates substantial historical market sensitivity"
+        ],
+        "momentum": [
+          "Strongly negative 20d and 50d returns; price below moving averages"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Deteriorating momentum with valuation evidence gap"
+        ],
+        "unacceptable_claims": [
+          "Inventing P/E or fair value"
+        ],
+        "limitations_to_acknowledge": [
+          "Missing P/E; no causal explanation for price decline"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "quality_reports": {
+        "evidence_quality": {
+          "level": "poor",
+          "usable_dimensions": [],
+          "insufficient_dimensions": [],
+          "failed_dimensions": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "explanation": "0 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "unestablished",
+          "directional_agents": [],
+          "positive_agents": [],
+          "negative_agents": [],
+          "explanation": "No usable directional assessments are available."
+        },
+        "execution_reliability": {
+          "successful_agents": [],
+          "failed_agents": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "success_count": 0,
+          "total_agents": 3,
+          "reliability": "failed",
+          "explanation": "0 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        }
+      },
+      "automated_checks": {
+        "execution_reliable": false,
+        "assessment_validity": {
+          "valuation": false,
+          "risk": false,
+          "momentum": false
+        },
+        "outlook_consistent": true
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    },
+    {
+      "case_id": "META",
+      "ticker": "META",
+      "scenario_category": "neutral",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E requires contextual comparison"
+        ],
+        "risk": [
+          "Beta indicates market sensitivity"
+        ],
+        "momentum": [
+          "Negative 20d return but positive 50d return; price near/below MA200"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Mixed momentum across time horizons"
+        ],
+        "unacceptable_claims": [
+          "Treating either time horizon as conclusive"
+        ],
+        "limitations_to_acknowledge": [
+          "No causal explanation or peer benchmark"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "quality_reports": {
+        "evidence_quality": {
+          "level": "poor",
+          "usable_dimensions": [],
+          "insufficient_dimensions": [],
+          "failed_dimensions": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "explanation": "0 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "unestablished",
+          "directional_agents": [],
+          "positive_agents": [],
+          "negative_agents": [],
+          "explanation": "No usable directional assessments are available."
+        },
+        "execution_reliability": {
+          "successful_agents": [],
+          "failed_agents": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "success_count": 0,
+          "total_agents": 3,
+          "reliability": "failed",
+          "explanation": "0 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        }
+      },
+      "automated_checks": {
+        "execution_reliable": false,
+        "assessment_validity": {
+          "valuation": false,
+          "risk": false,
+          "momentum": false
+        },
+        "outlook_consistent": true
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    },
+    {
+      "case_id": "JPM",
+      "ticker": "JPM",
+      "scenario_category": "neutral",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E available; EV/EBITDA and D/E missing"
+        ],
+        "risk": [
+          "Beta indicates market sensitivity"
+        ],
+        "momentum": [
+          "Positive 20d return but slightly negative 50d return"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Mixed momentum and incomplete financial evidence"
+        ],
+        "unacceptable_claims": [
+          "Inventing missing leverage or EV/EBITDA values"
+        ],
+        "limitations_to_acknowledge": [
+          "Missing D/E and EV/EBITDA"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "quality_reports": {
+        "evidence_quality": {
+          "level": "poor",
+          "usable_dimensions": [],
+          "insufficient_dimensions": [],
+          "failed_dimensions": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "explanation": "0 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "unestablished",
+          "directional_agents": [],
+          "positive_agents": [],
+          "negative_agents": [],
+          "explanation": "No usable directional assessments are available."
+        },
+        "execution_reliability": {
+          "successful_agents": [],
+          "failed_agents": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "success_count": 0,
+          "total_agents": 3,
+          "reliability": "failed",
+          "explanation": "0 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        }
+      },
+      "automated_checks": {
+        "execution_reliable": false,
+        "assessment_validity": {
+          "valuation": false,
+          "risk": false,
+          "momentum": false
+        },
+        "outlook_consistent": true
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    },
+    {
+      "case_id": "NVDA",
+      "ticker": "NVDA",
+      "scenario_category": "insufficient_evidence",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E and P/B are unavailable in this case"
+        ],
+        "risk": [
+          "Beta indicates elevated market sensitivity"
+        ],
+        "momentum": [
+          "Negative 20d and 50d returns; price below MA20 and MA200"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Momentum can be assessed; valuation assessment must acknowledge missing metrics"
+        ],
+        "unacceptable_claims": [
+          "Inventing missing valuation ratios"
+        ],
+        "limitations_to_acknowledge": [
+          "Masked valuation metrics; no peer benchmarks"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": {
+          "ticker": "NVDA",
+          "stance": "insufficient_evidence",
+          "evidence": [
+            "Enterprise to EBITDA ratio is 23.847.",
+            "Trailing P/E and price-to-book ratios are missing."
+          ],
+          "assumptions": [],
+          "limitations": [
+            "Missing trailing P/E and price-to-book data.",
+            "No peer or sector benchmarks provided.",
+            "No revenue, earnings, or growth data available.",
+            "Cannot calculate additional valuation metrics."
+          ],
+          "reasoning": "The only quantitative valuation metric supplied is the enterprise-to-EBITDA ratio of 23.847. Without comparable benchmarks, P/E, price-to-book, or other financial data, it is impossible to assess whether NVIDIA\u2019s valuation is high, low, or reasonable. Therefore, the evidence is insufficient to form a valuation stance."
+        },
+        "risk": null,
+        "momentum": null
+      },
+      "quality_reports": {
+        "evidence_quality": {
+          "level": "poor",
+          "usable_dimensions": [],
+          "insufficient_dimensions": [
+            "valuation"
+          ],
+          "failed_dimensions": [
+            "risk",
+            "momentum"
+          ],
+          "explanation": "0 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "unestablished",
+          "directional_agents": [],
+          "positive_agents": [],
+          "negative_agents": [],
+          "explanation": "No usable directional assessments are available."
+        },
+        "execution_reliability": {
+          "successful_agents": [
+            "valuation"
+          ],
+          "failed_agents": [
+            "risk",
+            "momentum"
+          ],
+          "success_count": 1,
+          "total_agents": 3,
+          "reliability": "partial",
+          "explanation": "1 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        }
+      },
+      "automated_checks": {
+        "execution_reliable": false,
+        "assessment_validity": {
+          "valuation": true,
+          "risk": false,
+          "momentum": false
+        },
+        "outlook_consistent": true
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    },
+    {
+      "case_id": "AMZN",
+      "ticker": "AMZN",
+      "scenario_category": "insufficient_evidence",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "All selected valuation ratios are unavailable"
+        ],
+        "risk": [
+          "Beta indicates market sensitivity"
+        ],
+        "momentum": [
+          "Positive but modest 20d and 50d returns"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Valuation insufficient evidence; momentum remains assessable"
+        ],
+        "unacceptable_claims": [
+          "Claiming valuation is cheap or expensive"
+        ],
+        "limitations_to_acknowledge": [
+          "Masked valuation metrics"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "quality_reports": {
+        "evidence_quality": {
+          "level": "poor",
+          "usable_dimensions": [],
+          "insufficient_dimensions": [],
+          "failed_dimensions": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "explanation": "0 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "unestablished",
+          "directional_agents": [],
+          "positive_agents": [],
+          "negative_agents": [],
+          "explanation": "No usable directional assessments are available."
+        },
+        "execution_reliability": {
+          "successful_agents": [],
+          "failed_agents": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "success_count": 0,
+          "total_agents": 3,
+          "reliability": "failed",
+          "explanation": "0 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        }
+      },
+      "automated_checks": {
+        "execution_reliable": false,
+        "assessment_validity": {
+          "valuation": false,
+          "risk": false,
+          "momentum": false
+        },
+        "outlook_consistent": true
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    },
+    {
+      "case_id": "TSLA",
+      "ticker": "TSLA",
+      "scenario_category": "insufficient_evidence",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "All selected valuation ratios are unavailable"
+        ],
+        "risk": [
+          "Beta indicates elevated market sensitivity"
+        ],
+        "momentum": [
+          "Positive 20d and 50d returns; price near MA200"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Valuation insufficient evidence; momentum is mixed-to-constructive"
+        ],
+        "unacceptable_claims": [
+          "Inventing valuation metrics or fair value"
+        ],
+        "limitations_to_acknowledge": [
+          "Masked valuation metrics; no forward estimates"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "quality_reports": {
+        "evidence_quality": {
+          "level": "poor",
+          "usable_dimensions": [],
+          "insufficient_dimensions": [],
+          "failed_dimensions": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "explanation": "0 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "unestablished",
+          "directional_agents": [],
+          "positive_agents": [],
+          "negative_agents": [],
+          "explanation": "No usable directional assessments are available."
+        },
+        "execution_reliability": {
+          "successful_agents": [],
+          "failed_agents": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "success_count": 0,
+          "total_agents": 3,
+          "reliability": "failed",
+          "explanation": "0 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        }
+      },
+      "automated_checks": {
+        "execution_reliable": false,
+        "assessment_validity": {
+          "valuation": false,
+          "risk": false,
+          "momentum": false
+        },
+        "outlook_consistent": true
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    }
+  ]
+}
