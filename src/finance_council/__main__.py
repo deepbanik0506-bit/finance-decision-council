@@ -20,7 +20,9 @@ def main():
             "risk": None,
             "momentum": None,
             "disagreement": None,
-            "confidence": None,
+            "evidence_quality": None,
+            "analytical_agreement": None,
+            "execution_reliability": None,
             "final_outlook": None,
             "valuation_error": None,
             "risk_error": None,
@@ -45,8 +47,14 @@ def main():
         print("\n[DISAGREEMENT]")
         print(result["disagreement"])
 
-        print("\n[CONFIDENCE]")
-        print(result["confidence"])
+        print("Evidence Quality:")
+        print(result["evidence_quality"])
+
+        print("Analytical Agreement:")
+        print(result["analytical_agreement"])
+
+        print("Execution Reliability:")
+        print(result["execution_reliability"])
 
         print("\n[FINAL OUTLOOK]")
         print(result["final_outlook"])

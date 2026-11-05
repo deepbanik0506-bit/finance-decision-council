@@ -1,3 +1,4 @@
+
 import json
 import os
 
@@ -34,6 +35,23 @@ class ValuationAgent:
         self.client = Groq(api_key=api_key)
         self.model = model
 
+    @staticmethod
+    def normalize_list_fields(data: dict) -> dict:
+        for field in ("evidence", "assumptions", "limitations"):
+            value = data.get(field)
+
+            if isinstance(value, str):
+                data[field] = [value]
+            elif value is None:
+                data[field] = []
+            elif not isinstance(value, list):
+                raise ValueError(
+                    f"Invalid valuation field '{field}': "
+                    f"expected list or string, got {type(value).__name__}"
+                )
+
+        return data
+
     def assess(self, evidence: MarketEvidence) -> ValuationAssessment:
         financial_data = {
             "ticker": evidence.ticker,
@@ -64,7 +82,9 @@ ticker, stance, evidence, assumptions, limitations, reasoning.
 stance must be one of:
 positive, neutral, negative, insufficient_evidence.
 
-Keep the assessment concise, evidence-grounded, and cautious.
+evidence, assumptions, and limitations MUST be JSON arrays of strings.
+Never return these fields as plain strings.
+
 This is analytical research, not personalized financial advice.
 """
 
@@ -82,6 +102,11 @@ This is analytical research, not personalized financial advice.
         )
 
         raw_output = response.choices[0].message.content
-        parsed_output = json.loads(raw_output)
 
-        return ValuationAssessment.model_validate(parsed_output)
+        if not raw_output:
+            raise ValueError("Groq returned an empty valuation response")
+
+        parsed_output = json.loads(raw_output)
+        normalized_output = self.normalize_list_fields(parsed_output)
+
+        return ValuationAssessment.model_validate(normalized_output)

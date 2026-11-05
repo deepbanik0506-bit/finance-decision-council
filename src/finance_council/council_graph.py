@@ -26,10 +26,28 @@ class DisagreementReport(TypedDict):
     explanation: str
 
 
-class ConfidenceReport(TypedDict):
-    score: int
+class EvidenceQualityReport(TypedDict):
     level: str
-    factors: list[str]
+    usable_dimensions: list[str]
+    insufficient_dimensions: list[str]
+    failed_dimensions: list[str]
+    explanation: str
+
+
+class AgreementReport(TypedDict):
+    classification: str
+    directional_agents: list[str]
+    positive_agents: list[str]
+    negative_agents: list[str]
+    explanation: str
+
+
+class ExecutionReport(TypedDict):
+    successful_agents: list[str]
+    failed_agents: list[str]
+    success_count: int
+    total_agents: int
+    reliability: str
     explanation: str
 
 
@@ -45,7 +63,9 @@ class CouncilState(TypedDict):
     momentum_error: str | None
 
     disagreement: DisagreementReport | None
-    confidence: ConfidenceReport | None
+    evidence_quality: EvidenceQualityReport | None
+    analytical_agreement: AgreementReport | None
+    execution_reliability: ExecutionReport | None
     final_outlook: dict | None
 
 
@@ -55,14 +75,8 @@ class CouncilState(TypedDict):
 
 def valuation_node(state: CouncilState) -> dict:
     try:
-        agent = ValuationAgent()
-        result = agent.assess(state["evidence"])
-
-        return {
-            "valuation": result,
-            "valuation_error": None,
-        }
-
+        result = ValuationAgent().assess(state["evidence"])
+        return {"valuation": result, "valuation_error": None}
     except Exception as exc:
         return {
             "valuation": None,
@@ -72,14 +86,8 @@ def valuation_node(state: CouncilState) -> dict:
 
 def risk_node(state: CouncilState) -> dict:
     try:
-        agent = RiskAgent()
-        result = agent.assess(state["evidence"])
-
-        return {
-            "risk": result,
-            "risk_error": None,
-        }
-
+        result = RiskAgent().assess(state["evidence"])
+        return {"risk": result, "risk_error": None}
     except Exception as exc:
         return {
             "risk": None,
@@ -89,14 +97,8 @@ def risk_node(state: CouncilState) -> dict:
 
 def momentum_node(state: CouncilState) -> dict:
     try:
-        agent = MomentumAgent()
-        result = agent.assess(state["evidence"])
-
-        return {
-            "momentum": result,
-            "momentum_error": None,
-        }
-
+        result = MomentumAgent().assess(state["evidence"])
+        return {"momentum": result, "momentum_error": None}
     except Exception as exc:
         return {
             "momentum": None,
@@ -105,7 +107,7 @@ def momentum_node(state: CouncilState) -> dict:
 
 
 # --------------------------------------------------
-# Disagreement Engine
+# Disagreement and Quality Analysis
 # --------------------------------------------------
 
 def disagreement_node(state: CouncilState) -> dict:
@@ -113,38 +115,38 @@ def disagreement_node(state: CouncilState) -> dict:
     risk = state["risk"]
     momentum = state["momentum"]
 
-    evidence_gaps = []
     failed_agents = []
+    evidence_gaps = []
     conflicting_agents = []
 
     if state["valuation_error"]:
         failed_agents.append("valuation")
-    elif valuation.stance == "insufficient_evidence":
+    elif valuation is None or valuation.stance == "insufficient_evidence":
         evidence_gaps.append("valuation")
 
     if state["risk_error"]:
         failed_agents.append("risk")
-    elif risk.risk_level == "insufficient_evidence":
+    elif risk is None or risk.risk_level == "insufficient_evidence":
         evidence_gaps.append("risk")
 
     if state["momentum_error"]:
         failed_agents.append("momentum")
-    elif momentum.stance == "insufficient_evidence":
+    elif momentum is None or momentum.stance == "insufficient_evidence":
         evidence_gaps.append("momentum")
 
     directional = {}
-
     if valuation is not None and not state["valuation_error"]:
-        directional["valuation"] = valuation.stance
+        if valuation.stance in ("positive", "negative"):
+            directional["valuation"] = valuation.stance
 
     if momentum is not None and not state["momentum_error"]:
-        directional["momentum"] = momentum.stance
+        if momentum.stance in ("positive", "negative"):
+            directional["momentum"] = momentum.stance
 
     positive = [
         name for name, stance in directional.items()
         if stance == "positive"
     ]
-
     negative = [
         name for name, stance in directional.items()
         if stance == "negative"
@@ -153,28 +155,13 @@ def disagreement_node(state: CouncilState) -> dict:
     if positive and negative:
         conflicting_agents = positive + negative
         classification = "conflict"
-
-        explanation = (
-            "Directional agents produced opposing positive and negative "
-            "assessments."
-        )
-
+        explanation = "Directional agents produced opposing assessments."
     elif failed_agents:
         classification = "agent_failure"
-
-        explanation = (
-            "One or more agents failed during execution: "
-            + ", ".join(failed_agents)
-        )
-
+        explanation = "One or more agents failed during execution."
     elif evidence_gaps:
-        classification = "insufficient_evidence"
-
-        explanation = (
-            "One or more agents could not reach an assessment due to "
-            "insufficient evidence."
-        )
-
+        classification = "evidence_gap"
+        explanation = "One or more dimensions lack sufficient evidence."
     else:
         classification = "no_conflict"
         explanation = "No opposing directional assessments were detected."
@@ -190,160 +177,202 @@ def disagreement_node(state: CouncilState) -> dict:
     return {"disagreement": report}
 
 
-# --------------------------------------------------
-# Confidence Model
-# --------------------------------------------------
-
-def confidence_node(state: CouncilState) -> dict:
-    valuation = state["valuation"]
-    risk = state["risk"]
-    momentum = state["momentum"]
-    disagreement = state["disagreement"]
-
-    score = 100
-    factors = []
-
-    # Evidence completeness
-    missing_count = len(state["evidence"].missing_fields)
-    evidence_penalty = min(missing_count * 5, 30)
-
-    score -= evidence_penalty
-
-    if evidence_penalty:
-        factors.append(
-            f"Missing market fields: -{evidence_penalty}"
-        )
-
-    # Agent coverage
-    usable_agents = sum([
-        valuation is not None
-        and valuation.stance != "insufficient_evidence",
-
-        risk is not None
-        and risk.risk_level != "insufficient_evidence",
-
-        momentum is not None
-        and momentum.stance != "insufficient_evidence",
-    ])
-
-    coverage_score = usable_agents / 3
-    coverage_penalty = round((1 - coverage_score) * 30)
-
-    score -= coverage_penalty
-
-    if coverage_penalty:
-        factors.append(
-            f"Insufficient agent assessments: -{coverage_penalty}"
-        )
-
-    # Execution failures
-    failed_agents = disagreement["failed_agents"]
-
-    if failed_agents:
-        failure_penalty = min(len(failed_agents) * 20, 60)
-
-        score -= failure_penalty
-
-        factors.append(
-            f"Agent execution failures: -{failure_penalty}"
-        )
-
-    # Directional conflict and evidence gaps
-    if disagreement["classification"] == "conflict":
-        score -= 20
-        factors.append("Directional disagreement: -20")
-
-    elif disagreement["classification"] == "insufficient_evidence":
-        score -= 10
-        factors.append("Evidence gaps: -10")
-
-    score = max(0, min(100, score))
-
-    if score >= 80:
-        level = "high"
-    elif score >= 60:
-        level = "moderate"
-    else:
-        level = "low"
-
-    report: ConfidenceReport = {
-        "score": score,
-        "level": level,
-        "factors": factors,
-        "explanation": (
-            "Confidence reflects evidence completeness, agent coverage, "
-            "execution reliability, and directional consistency. "
-            "It does not predict returns and is not a probability."
+def evidence_quality_node(state: CouncilState) -> dict:
+    assessments = {
+        "valuation": (
+            state["valuation"],
+            state["valuation_error"],
+            "stance",
+        ),
+        "risk": (
+            state["risk"],
+            state["risk_error"],
+            "risk_level",
+        ),
+        "momentum": (
+            state["momentum"],
+            state["momentum_error"],
+            "stance",
         ),
     }
 
-    return {"confidence": report}
+    usable = []
+    insufficient = []
+    failed = []
+
+    for name, (assessment, error, field) in assessments.items():
+        if error:
+            failed.append(name)
+        elif assessment is not None and getattr(assessment, field) != "insufficient_evidence":
+            usable.append(name)
+        else:
+            insufficient.append(name)
+
+    if len(usable) == 3:
+        level = "complete"
+    elif usable:
+        level = "partial"
+    else:
+        level = "poor"
+
+    report: EvidenceQualityReport = {
+        "level": level,
+        "usable_dimensions": usable,
+        "insufficient_dimensions": insufficient,
+        "failed_dimensions": failed,
+        "explanation": (
+            f"{len(usable)} of 3 dimensions produced usable assessments. "
+            "Execution failures are tracked separately."
+        ),
+    }
+
+    return {"evidence_quality": report}
+
+
+def analytical_agreement_node(state: CouncilState) -> dict:
+    directional = {}
+
+    valuation = state["valuation"]
+    momentum = state["momentum"]
+
+    if valuation is not None and not state["valuation_error"]:
+        if valuation.stance in ("positive", "negative"):
+            directional["valuation"] = valuation.stance
+
+    if momentum is not None and not state["momentum_error"]:
+        if momentum.stance in ("positive", "negative"):
+            directional["momentum"] = momentum.stance
+
+    positive = [
+        name for name, stance in directional.items()
+        if stance == "positive"
+    ]
+    negative = [
+        name for name, stance in directional.items()
+        if stance == "negative"
+    ]
+
+    if positive and negative:
+        classification = "conflicting"
+        explanation = "Directional assessments disagree."
+    elif len(directional) >= 2:
+        classification = "aligned"
+        explanation = "Available directional assessments agree."
+    elif directional:
+        classification = "limited"
+        explanation = "Only one directional assessment is available."
+    else:
+        classification = "unestablished"
+        explanation = "No usable directional assessments are available."
+
+    report: AgreementReport = {
+        "classification": classification,
+        "directional_agents": list(directional),
+        "positive_agents": positive,
+        "negative_agents": negative,
+        "explanation": explanation,
+    }
+
+    return {"analytical_agreement": report}
+
+
+def execution_reliability_node(state: CouncilState) -> dict:
+    errors = {
+        "valuation": state["valuation_error"],
+        "risk": state["risk_error"],
+        "momentum": state["momentum_error"],
+    }
+
+    failed = [name for name, error in errors.items() if error]
+    successful = [name for name, error in errors.items() if not error]
+
+    count = len(successful)
+
+    if count == 3:
+        reliability = "complete"
+    elif count > 0:
+        reliability = "partial"
+    else:
+        reliability = "failed"
+
+    report: ExecutionReport = {
+        "successful_agents": successful,
+        "failed_agents": failed,
+        "success_count": count,
+        "total_agents": 3,
+        "reliability": reliability,
+        "explanation": (
+            f"{count} of 3 agents executed successfully. "
+            "Successful execution does not imply sufficient evidence."
+        ),
+    }
+
+    return {"execution_reliability": report}
 
 
 # --------------------------------------------------
-# Final Outlook
+# Dimension-Aware Final Outlook
 # --------------------------------------------------
 
 def final_outlook_node(state: CouncilState) -> dict:
     valuation = state["valuation"]
+    risk = state["risk"]
     momentum = state["momentum"]
-    disagreement = state["disagreement"]
 
-    valuation_failed = state["valuation_error"] is not None
-    momentum_failed = state["momentum_error"] is not None
+    valuation_status = (
+        valuation.stance if valuation is not None else "failed"
+    )
+    risk_status = (
+        risk.risk_level if risk is not None else "failed"
+    )
+    momentum_status = (
+        momentum.stance if momentum is not None else "failed"
+    )
 
-    v = valuation.stance if valuation is not None else None
-    m = momentum.stance if momentum is not None else None
+    dimensions = {
+        "valuation": valuation_status,
+        "risk": risk_status,
+        "momentum": momentum_status,
+    }
 
-    if valuation_failed or momentum_failed:
-        outlook = "insufficient_evidence"
+    usable_directional = [
+        value for value in (valuation_status, momentum_status)
+        if value in ("positive", "negative")
+    ]
 
+    if len(usable_directional) == 2:
+        if usable_directional[0] == usable_directional[1]:
+            overall = usable_directional[0]
+            rationale = (
+                "Valuation and momentum support the same direction. "
+                "Risk remains a separate contextual assessment."
+            )
+        else:
+            overall = "mixed"
+            rationale = (
+                "Valuation and momentum provide opposing directional signals."
+            )
+    elif len(usable_directional) == 1:
+        overall = "partial_directional"
         rationale = (
-            "At least one directional agent failed during execution. "
-            "A reliable directional outlook cannot be established."
+            "One dimension provides a directional signal; "
+            "the other does not establish direction."
         )
-
-    elif v == "insufficient_evidence" or m == "insufficient_evidence":
-        outlook = "insufficient_evidence"
-
-        rationale = (
-            "At least one directional agent lacks sufficient evidence."
-        )
-
-    elif v == "positive" and m == "positive":
-        outlook = "positive"
-
-        rationale = (
-            "Valuation and momentum assessments are both positive."
-        )
-
-    elif v == "negative" and m == "negative":
-        outlook = "negative"
-
-        rationale = (
-            "Valuation and momentum assessments are both negative."
-        )
-
-    elif v in ("positive", "negative") and m in ("positive", "negative"):
-        outlook = "neutral"
-
-        rationale = (
-            "Valuation and momentum assessments conflict."
-        )
-
     else:
-        outlook = "neutral"
-        rationale = "No consistent directional outlook was established."
+        overall = "insufficient_evidence"
+        rationale = "No usable directional synthesis can be established."
 
     result = {
         "ticker": state["evidence"].ticker,
-        "outlook": outlook,
-        "confidence": state["confidence"]["score"],
-        "confidence_level": state["confidence"]["level"],
-        "rationale": rationale,
-        "disagreement": disagreement["classification"],
-        "failed_agents": disagreement["failed_agents"],
-        "evidence_gaps": disagreement["evidence_gaps"],
+        "dimensions": dimensions,
+        "overall_outlook": overall,
+        "interpretation": rationale,
+        "evidence_quality": state["evidence_quality"],
+        "analytical_agreement": state["analytical_agreement"],
+        "execution_reliability": state["execution_reliability"],
+        "disagreement": state["disagreement"]["classification"],
+        "failed_agents": state["disagreement"]["failed_agents"],
+        "evidence_gaps": state["disagreement"]["evidence_gaps"],
     }
 
     return {"final_outlook": result}
@@ -361,22 +390,27 @@ def build_council_graph():
     graph.add_node("momentum", momentum_node)
 
     graph.add_node("disagreement", disagreement_node)
-    graph.add_node("confidence", confidence_node)
+    graph.add_node("evidence_quality", evidence_quality_node)
+    graph.add_node("analytical_agreement", analytical_agreement_node)
+    graph.add_node("execution_reliability", execution_reliability_node)
     graph.add_node("final_outlook", final_outlook_node)
 
-    # Parallel agent execution
     graph.add_edge(START, "valuation")
     graph.add_edge(START, "risk")
     graph.add_edge(START, "momentum")
 
-    # Fan-in barrier
     graph.add_edge("valuation", "disagreement")
     graph.add_edge("risk", "disagreement")
     graph.add_edge("momentum", "disagreement")
 
-    # Sequential synthesis
-    graph.add_edge("disagreement", "confidence")
-    graph.add_edge("confidence", "final_outlook")
+    graph.add_edge("disagreement", "evidence_quality")
+    graph.add_edge("disagreement", "analytical_agreement")
+    graph.add_edge("disagreement", "execution_reliability")
+
+    graph.add_edge("evidence_quality", "final_outlook")
+    graph.add_edge("analytical_agreement", "final_outlook")
+    graph.add_edge("execution_reliability", "final_outlook")
+
     graph.add_edge("final_outlook", END)
 
     return graph.compile()
