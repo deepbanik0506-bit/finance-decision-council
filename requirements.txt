@@ -1,0 +1,9 @@
+# Runtime dependencies (council + API). Versions verified locally on Python 3.14.
+fastapi==0.162.0
+uvicorn[standard]==0.54.0
+langgraph==1.2.20
+groq==1.7.0
+pydantic==2.14.2
+yfinance==1.8.0
+pandas==3.1.0
+python-dotenv==1.2.4

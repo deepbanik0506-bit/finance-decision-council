@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-bg: #0a0c0f;
+  --color-panel: #11151a;
+  --color-panel-2: #161b22;
+  --color-line: #232a33;
+  --color-line-strong: #2f3843;
+  --color-ink: #d7dde4;
+  --color-ink-2: #a7b0bb;
+  --color-muted: #7d8794;
+
+  --color-pos: #3fae6a;
+  --color-neg: #d9584c;
+  --color-warn: #d6a33c;
+  --color-info: #4d93e0;
+
+  --color-chart-line: #3987e5;
+  --color-chart-volume: #4a5563;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Recharts focus outline on click is noisy in a terminal UI */
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
