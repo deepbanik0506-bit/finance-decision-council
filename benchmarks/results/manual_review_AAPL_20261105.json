@@ -1,0 +1,70 @@
+
+{
+  "case_id": "AAPL",
+  "ticker": "AAPL",
+  "review_timestamp": "2026-11-05T12:40:00+05:30",
+  "agent_scores": {
+    "valuation": {
+      "evidence_grounding": {
+        "score": 5,
+        "justification": "All cited valuation ratios appear in the supplied evidence."
+      },
+      "unsupported_claims": {
+        "score": 5,
+        "justification": "No unsupported valuation direction or peer comparison is asserted."
+      },
+      "analytical_defensibility": {
+        "score": 5,
+        "justification": "Withholds directional judgment because relative valuation evidence is missing."
+      },
+      "limitation_acknowledgment": {
+        "score": 5,
+        "justification": "Explicitly identifies missing peer benchmarks and additional financial metrics."
+      }
+    },
+    "risk": {
+      "evidence_grounding": {
+        "score": 3,
+        "justification": "Beta and debt-to-equity are grounded metrics, but historical price range is insufficient to establish volatility."
+      },
+      "unsupported_claims": {
+        "score": 3,
+        "justification": "High leverage and moderate volatility are asserted without sufficient contextual benchmarks or dedicated volatility measurements."
+      },
+      "analytical_defensibility": {
+        "score": 3,
+        "justification": "Moderate risk is plausible from beta, but leverage interpretation and price-range reasoning are weak."
+      },
+      "limitation_acknowledgment": {
+        "score": 5,
+        "justification": "Explicitly identifies missing industry benchmarks, additional risk metrics, and macroeconomic context."
+      }
+    },
+    "momentum": {
+      "evidence_grounding": {
+        "score": 5,
+        "justification": "Moving averages, historical returns, and volume figures are explicitly cited."
+      },
+      "unsupported_claims": {
+        "score": 3,
+        "justification": "Claims bullish signals and no conflicting indicators without demonstrating a comprehensive indicator assessment."
+      },
+      "analytical_defensibility": {
+        "score": 5,
+        "justification": "Price above three moving averages, positive returns, and increased volume support constructive historical momentum."
+      },
+      "limitation_acknowledgment": {
+        "score": 3,
+        "justification": "Acknowledges technical-only assessment and persistence uncertainty but does not explicitly discuss limitations of volume interpretation."
+      }
+    }
+  },
+  "council_score": {
+    "outlook_consistency": {
+      "score": 5,
+      "justification": "The partial-directional outlook accurately reflects positive momentum, moderate risk, and insufficient valuation evidence without overstating analytical agreement."
+    }
+  },
+  "critical_failures": [],
+  "case_status": "PASS"
+}

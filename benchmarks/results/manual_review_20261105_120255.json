@@ -1,0 +1,141 @@
+{
+  "evaluation_type": "manual_review",
+  "scoring_scale": "0-5",
+  "cases": [
+    {
+      "case_id": "AAPL",
+      "ticker": "AAPL",
+      "scenario_category": "positive",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E and P/B indicate valuation sensitivity"
+        ],
+        "risk": [
+          "Beta indicates moderate market sensitivity"
+        ],
+        "momentum": [
+          "Price above MA20, MA50, and MA200; positive 20d and 50d returns"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Constructive historical momentum with valuation caution"
+        ],
+        "unacceptable_claims": [
+          "Guaranteed future appreciation",
+          "Undocumented peer valuation claims"
+        ],
+        "limitations_to_acknowledge": [
+          "No peer benchmarks or forward earnings estimates"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": {
+          "ticker": "AAPL",
+          "stance": "insufficient_evidence",
+          "evidence": [
+            "trailing_pe: 38.920937",
+            "price_to_book: 45.314407",
+            "enterprise_to_ebitda: 29.755"
+          ],
+          "assumptions": [],
+          "limitations": [
+            "No peer or sector benchmarks provided to assess relative valuation",
+            "Missing additional financial metrics that could inform valuation"
+          ],
+          "reasoning": "The available data includes only a few valuation ratios for Apple Inc. Without comparable figures from peers or sector averages, it is impossible to determine whether these ratios indicate a cheap or expensive valuation. Therefore, the evidence is insufficient to form a positive, neutral, or negative stance."
+        },
+        "risk": {
+          "ticker": "AAPL",
+          "risk_level": "moderate",
+          "evidence": [
+            "beta 1.089 indicates sensitivity slightly above market average",
+            "debt_to_equity 71.468 indicates high leverage relative to equity",
+            "historical close prices range from ~246 to ~350, showing moderate price volatility"
+          ],
+          "assumptions": [
+            "Interpreting debt_to_equity as high leverage without industry comparison",
+            "Assuming beta reflects market risk exposure",
+            "Assuming price range reflects historical volatility"
+          ],
+          "limitations": [
+            "No industry benchmark for debt-to-equity",
+            "No other risk metrics (e.g., liquidity, earnings volatility)",
+            "No macroeconomic or sector-specific context"
+          ],
+          "reasoning": "The beta suggests the stock moves somewhat more than the market, indicating moderate systematic risk. The debt-to-equity ratio is very high, implying significant leverage that could amplify financial risk, though without industry context it is unclear how extreme this is. Historical price data shows a range of roughly $100 over the period, indicating moderate volatility. Combining these factors leads to a moderate risk assessment, acknowledging that missing contextual evidence limits certainty."
+        },
+        "momentum": {
+          "ticker": "AAPL",
+          "stance": "positive",
+          "evidence": [
+            "Current close (349.51) is above the 20\u2011day MA (342.91), 50\u2011day MA (334.84), and 200\u2011day MA (297.58), indicating a bullish short\u2011term trend.",
+            "Price increased 3.81% over the last 20 days and 12.78% over the last 50 days, confirming upward momentum.",
+            "Average 20\u2011day volume is 46.33M shares, while the latest volume is 89.52M shares, a substantial volume spike supporting the price move."
+          ],
+          "assumptions": [],
+          "limitations": [
+            "Assessment is based solely on technical indicators; no fundamental or news data considered.",
+            "Short\u2011term bullish signals may not persist; longer\u2011term trends are not evaluated beyond the 200\u2011day MA."
+          ],
+          "reasoning": "The price is above all key moving averages, recent price gains are strong, and volume has increased markedly, all of which are classic short\u2011term bullish momentum signals. No conflicting indicators are present, so the stance is positive."
+        }
+      },
+      "quality_reports": {
+        "evidence_quality": {
+          "level": "partial",
+          "usable_dimensions": [
+            "risk",
+            "momentum"
+          ],
+          "insufficient_dimensions": [
+            "valuation"
+          ],
+          "failed_dimensions": [],
+          "explanation": "2 of 3 dimensions produced usable assessments. Execution failures are tracked separately."
+        },
+        "analytical_agreement": {
+          "classification": "limited",
+          "directional_agents": [
+            "momentum"
+          ],
+          "positive_agents": [
+            "momentum"
+          ],
+          "negative_agents": [],
+          "explanation": "Only one directional assessment is available."
+        },
+        "execution_reliability": {
+          "successful_agents": [
+            "valuation",
+            "risk",
+            "momentum"
+          ],
+          "failed_agents": [],
+          "success_count": 3,
+          "total_agents": 3,
+          "reliability": "complete",
+          "explanation": "3 of 3 agents executed successfully. Successful execution does not imply sufficient evidence."
+        }
+      },
+      "automated_checks": {
+        "execution_reliable": true,
+        "assessment_validity": {
+          "valuation": true,
+          "risk": true,
+          "momentum": true
+        },
+        "outlook_consistent": true
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    }
+  ]
+}

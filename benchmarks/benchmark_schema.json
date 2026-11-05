@@ -1,0 +1,64 @@
+
+{
+  "benchmark_version": "1.0",
+  "description": "Finance Decision Council reliability and analytical quality benchmark",
+  "case_count": 10,
+  "evaluation_dimensions": {
+    "execution_reliability": {
+      "type": "automated",
+      "description": "Council execution completes without unhandled exceptions"
+    },
+    "structured_output_validity": {
+      "type": "automated",
+      "description": "Agent outputs satisfy their Pydantic schemas"
+    },
+    "evidence_grounding": {
+      "type": "rubric",
+      "description": "Claims are supported by supplied market evidence"
+    },
+    "unsupported_claims": {
+      "type": "rubric",
+      "description": "Agents avoid inventing metrics, benchmarks, or facts"
+    },
+    "analytical_defensibility": {
+      "type": "rubric",
+      "description": "Assessment follows logically from available evidence"
+    },
+    "outlook_consistency": {
+      "type": "automated_and_rubric",
+      "description": "Final outlook respects agent assessments and evidence limitations"
+    }
+  },
+  "case_schema": {
+    "case_id": "string",
+    "ticker": "string",
+    "scenario_category": "positive | negative | neutral | insufficient_evidence",
+    "market_evidence": "MarketEvidence",
+    "expected_evidence_requirements": {
+      "valuation": ["string"],
+      "risk": ["string"],
+      "momentum": ["string"]
+    },
+    "evaluation_notes": {
+      "acceptable_conclusions": ["string"],
+      "unacceptable_claims": ["string"],
+      "limitations_to_acknowledge": ["string"]
+    }
+  },
+  "scoring": {
+    "scale": "0-5",
+    "0": "Severe failure",
+    "1": "Poor",
+    "2": "Weak",
+    "3": "Acceptable",
+    "4": "Strong",
+    "5": "Excellent"
+  },
+  "constraints": [
+    "Benchmark evidence must be frozen",
+    "Evaluation must not depend on live market data",
+    "Confidence scores are not accuracy measurements",
+    "Reference expectations must not require predicting future returns",
+    "Missing evidence must not be treated as negative evidence"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "evaluation_type": "manual_review",
+  "scoring_scale": "0-5",
+  "cases": [
+    {
+      "case_id": "AAPL",
+      "ticker": "AAPL",
+      "scenario_category": "positive",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E and P/B indicate valuation sensitivity"
+        ],
+        "risk": [
+          "Beta indicates moderate market sensitivity"
+        ],
+        "momentum": [
+          "Price above MA20, MA50, and MA200; positive 20d and 50d returns"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Constructive historical momentum with valuation caution"
+        ],
+        "unacceptable_claims": [
+          "Guaranteed future appreciation",
+          "Undocumented peer valuation claims"
+        ],
+        "limitations_to_acknowledge": [
+          "No peer benchmarks or forward earnings estimates"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": null,
+        "risk": {
+          "ticker": "AAPL",
+          "risk_level": "moderate",
+          "evidence": [
+            "Beta of 1.089 indicates moderate sensitivity to market movements.",
+            "Debt-to-equity ratio of 71.468 suggests high leverage relative to typical equity levels.",
+            "Historical closing prices show fluctuations ranging from ~246 to ~349 over the period, indicating price volatility."
+          ],
+          "assumptions": [
+            "Interpreting debt-to-equity as high leverage; interpretation depends on industry context.",
+            "Price history variability is taken as a proxy for market risk.",
+            "Beta reflects sensitivity to broad market movements, not total risk."
+          ],
+          "limitations": [
+            "No industry benchmark for debt-to-equity provided.",
+            "No other risk metrics (e.g., liquidity, earnings volatility) are supplied.",
+            "Historical price data alone does not predict future risk.",
+            "Missing macroeconomic or company-specific events that could affect risk."
+          ],
+          "reasoning": "The beta value suggests the stock moves somewhat more than the market, indicating moderate systematic risk. The debt-to-equity ratio is high, implying significant leverage, which can amplify financial risk, especially if earnings decline. The price history shows notable swings, but without context on earnings or cash flow, the volatility alone does not fully capture risk. Combining these factors, the evidence points to a moderate risk level, acknowledging that the lack of industry context and additional metrics limits the certainty of this assessment."
+        },
+        "momentum": {
+          "ticker": "AAPL",
+          "stance": "positive",
+          "evidence": [
+            "Current close above 20, 50, and 200-day moving averages.",
+            "20-day price change of +3.81% indicates recent upward momentum.",
+            "50-day price change of +12.78% shows stronger medium-term trend.",
+            "Latest volume (89.5M) exceeds 20-day average volume (46.3M), indicating increased buying interest."
+          ],
+          "assumptions": [],
+          "limitations": [
+            "Analysis based solely on short-term technical indicators; does not account for fundamental factors.",
+            "No information on broader market context or potential catalysts."
+          ],
+          "reasoning": "The price is above all key moving averages, and both short- and medium-term price changes are positive, suggesting upward momentum. The volume spike relative to the 20\u2011day average further supports increased buying activity. No conflicting technical signals are present, so the momentum assessment is positive, though it is limited to the supplied indicators and does not consider fundamentals or market-wide factors."
+        }
+      },
+      "final_outlook": {
+        "ticker": "AAPL",
+        "outlook": "insufficient_evidence",
+        "confidence": 70,
+        "confidence_level": "moderate",
+        "rationale": "At least one directional agent failed during execution. A reliable directional outlook cannot be established.",
+        "disagreement": "agent_failure",
+        "failed_agents": [
+          "valuation"
+        ],
+        "evidence_gaps": []
+      },
+      "automated_checks": {
+        "execution_reliable": false,
+        "assessment_validity": {
+          "valuation": false,
+          "risk": true,
+          "momentum": true
+        },
+        "outlook_consistent": false
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    }
+  ]
+}

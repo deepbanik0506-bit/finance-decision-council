@@ -1,0 +1,104 @@
+{
+  "evaluation_type": "manual_review",
+  "scoring_scale": "0-5",
+  "cases": [
+    {
+      "case_id": "AAPL",
+      "ticker": "AAPL",
+      "scenario_category": "positive",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E and P/B indicate valuation sensitivity"
+        ],
+        "risk": [
+          "Beta indicates moderate market sensitivity"
+        ],
+        "momentum": [
+          "Price above MA20, MA50, and MA200; positive 20d and 50d returns"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Constructive historical momentum with valuation caution"
+        ],
+        "unacceptable_claims": [
+          "Guaranteed future appreciation",
+          "Undocumented peer valuation claims"
+        ],
+        "limitations_to_acknowledge": [
+          "No peer benchmarks or forward earnings estimates"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": null,
+        "risk": {
+          "ticker": "AAPL",
+          "risk_level": "moderate",
+          "evidence": [
+            "Beta of 1.089 indicates slightly higher sensitivity to market movements.",
+            "Debt-to-equity ratio of 71.468 suggests significant leverage relative to equity.",
+            "Historical close prices range from approximately $246 to $354 over the period, showing notable price swings.",
+            "The price history shows frequent daily fluctuations, implying moderate volatility."
+          ],
+          "assumptions": [
+            "Debt-to-equity ratio is interpreted as a measure of leverage.",
+            "Beta reflects sensitivity to broad market movements.",
+            "Price range and daily fluctuations are taken as indicators of historical volatility."
+          ],
+          "limitations": [
+            "No data on earnings, cash flow, or debt maturity structure.",
+            "Industry-specific risk factors are not provided.",
+            "Only price history is available; no forward-looking metrics.",
+            "Missing context on macroeconomic conditions or company-specific events."
+          ],
+          "reasoning": "The combination of a beta slightly above 1, a high debt-to-equity ratio, and a price history with significant swings suggests that the company carries moderate risk. The evidence points to market sensitivity and leverage concerns, but the absence of earnings or cash flow data limits a more precise assessment. Therefore, a moderate risk level is assigned."
+        },
+        "momentum": {
+          "ticker": "AAPL",
+          "stance": "positive",
+          "evidence": [
+            "Current close (349.51) is above 20\u2011day MA (342.91), 50\u2011day MA (334.84), and 200\u2011day MA (297.58) indicating short\u2011term and long\u2011term bullish trend",
+            "Price increased 3.81% over the last 20 days and 12.78% over the last 50 days, showing sustained upward momentum",
+            "Average 20\u2011day volume is 46.33M and latest volume is 89.52M, a significant volume spike supporting the price move"
+          ],
+          "assumptions": [],
+          "limitations": [
+            "No other momentum indicators (e.g., RSI, MACD) are provided",
+            "No fundamental or news context is available to confirm the sustainability of the trend"
+          ],
+          "reasoning": "All supplied indicators point to a bullish short\u2011term and long\u2011term momentum for AAPL. The price is above all relevant moving averages, recent price gains are positive, and volume has increased markedly, reinforcing the upward trend. No conflicting signals are present in the data. Therefore, the stance is positive."
+        }
+      },
+      "final_outlook": {
+        "ticker": "AAPL",
+        "outlook": "insufficient_evidence",
+        "confidence": 70,
+        "confidence_level": "moderate",
+        "rationale": "At least one directional agent failed during execution. A reliable directional outlook cannot be established.",
+        "disagreement": "agent_failure",
+        "failed_agents": [
+          "valuation"
+        ],
+        "evidence_gaps": []
+      },
+      "automated_checks": {
+        "execution_reliable": false,
+        "assessment_validity": {
+          "valuation": false,
+          "risk": true,
+          "momentum": true
+        },
+        "outlook_consistent": false
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    }
+  ]
+}

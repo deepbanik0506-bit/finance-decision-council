@@ -1,0 +1,1007 @@
+{
+  "evaluation_timestamp": "2026-11-05T09:46:57.922118",
+  "dataset_version": "1.0",
+  "inference_mode": "live",
+  "summary": {
+    "total_cases": 10,
+    "execution_reliable_cases": 9,
+    "execution_reliability_rate": 0.9,
+    "fully_valid_cases": 9,
+    "structured_output_validity_rate": 0.9,
+    "consistent_cases": 10,
+    "outlook_consistency_rate": 1.0,
+    "agent_failure_count": 1,
+    "outer_execution_failure_count": 0
+  },
+  "results": [
+    {
+      "case_id": "AAPL",
+      "ticker": "AAPL",
+      "scenario_category": "positive",
+      "started_at": "2026-11-05T09:37:11.790930",
+      "execution_reliable": true,
+      "assessment_validity": {
+        "valuation": true,
+        "risk": true,
+        "momentum": true
+      },
+      "outlook_consistent": true,
+      "agent_errors": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "valuation": {
+        "ticker": "AAPL",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "trailing_pe: 38.920937",
+          "price_to_book: 45.314407",
+          "enterprise_to_ebitda: 29.755"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No peer or sector benchmarks provided",
+          "No additional financial metrics or qualitative data available"
+        ],
+        "reasoning": "The supplied data includes only a few valuation ratios for Apple Inc. Without comparable figures from peers or sector averages, it is impossible to assess whether these ratios indicate a cheap or expensive valuation. Therefore, a reliable stance on the stock\u2019s value cannot be established based solely on the provided evidence."
+      },
+      "risk": {
+        "ticker": "AAPL",
+        "risk_level": "high",
+        "evidence": [
+          "beta 1.089",
+          "debt_to_equity 71.468",
+          "historical close prices ranging from ~250 to ~350 over the period"
+        ],
+        "assumptions": [
+          "High debt-to-equity suggests higher financial leverage and potential risk",
+          "Beta above 1 indicates greater sensitivity to market movements",
+          "Price volatility in the historical data reflects market risk"
+        ],
+        "limitations": [
+          "Debt-to-equity interpretation depends on industry context; Apple\u2019s industry may tolerate higher leverage",
+          "Beta measures only market sensitivity, not total risk",
+          "Historical price data covers a limited recent period and may not capture long\u2011term risk"
+        ],
+        "reasoning": "The supplied beta indicates moderate market sensitivity, while the debt-to-equity ratio is unusually high, implying significant leverage risk. The price history shows notable volatility, reinforcing market risk. Combined, these factors point to a higher overall risk profile, though industry context and limited data introduce uncertainty."
+      },
+      "momentum": {
+        "ticker": "AAPL",
+        "stance": "positive",
+        "evidence": [
+          "Current close above 20\u2011day, 50\u2011day, and 200\u2011day moving averages",
+          "20\u2011day price change +3.81% and 50\u2011day price change +12.78%",
+          "Latest volume 89.5M exceeds 20\u2011day average volume 46.3M"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "Analysis based solely on supplied technical indicators; no fundamental or external data considered"
+        ],
+        "reasoning": "The stock is trading above all key moving averages, indicating a bullish short\u2011term trend. The positive 20\u2011day and 50\u2011day price changes confirm upward momentum over the past month and two months. A volume spike relative to the 20\u2011day average suggests strong buying interest. No conflicting signals are present, so the momentum assessment is positive."
+      },
+      "disagreement": {
+        "classification": "insufficient_evidence",
+        "conflicting_agents": [],
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ],
+        "explanation": "One or more agents could not reach an assessment due to insufficient evidence."
+      },
+      "confidence": {
+        "score": 80,
+        "level": "high",
+        "factors": [
+          "Insufficient agent assessments: -10",
+          "Evidence gaps: -10"
+        ],
+        "explanation": "Confidence reflects evidence completeness, agent coverage, execution reliability, and directional consistency. It does not predict returns and is not a probability."
+      },
+      "final_outlook": {
+        "ticker": "AAPL",
+        "outlook": "insufficient_evidence",
+        "confidence": 80,
+        "confidence_level": "high",
+        "rationale": "At least one directional agent lacks sufficient evidence.",
+        "disagreement": "insufficient_evidence",
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ]
+      },
+      "error": null
+    },
+    {
+      "case_id": "MSFT",
+      "ticker": "MSFT",
+      "scenario_category": "positive",
+      "started_at": "2026-11-05T09:37:52.535425",
+      "execution_reliable": true,
+      "assessment_validity": {
+        "valuation": true,
+        "risk": true,
+        "momentum": true
+      },
+      "outlook_consistent": true,
+      "agent_errors": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "valuation": {
+        "ticker": "MSFT",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "Trailing P/E: 29.00835",
+          "Price-to-Book: 8.773342",
+          "Enterprise-to-EBITDA: 20.411",
+          "Market Cap: 4.127 trillion"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No peer or sector benchmarks provided",
+          "No growth or profitability metrics beyond P/E, P/B, EV/EBITDA",
+          "No cash flow or debt data",
+          "No historical valuation trends"
+        ],
+        "reasoning": "The supplied data includes only a few valuation ratios and market cap. Without comparable benchmarks, growth outlook, or additional financial metrics, it is impossible to determine whether Microsoft\u2019s stock is undervalued, fairly valued, or overvalued. Therefore, the evidence is insufficient to form a valuation stance."
+      },
+      "risk": {
+        "ticker": "MSFT",
+        "risk_level": "moderate",
+        "evidence": [
+          "beta 1.045 indicates market sensitivity similar to overall market",
+          "debt_to_equity 28.465 indicates high leverage relative to typical tech peers",
+          "historical close prices show a decline from ~503 to ~350 over the period, reflecting price volatility"
+        ],
+        "assumptions": [
+          "Industry context: technology companies generally have lower debt-to-equity; thus 28.465 is unusually high",
+          "Beta reflects systematic risk only, not company\u2011specific risk"
+        ],
+        "limitations": [
+          "No data on earnings, cash flow, or debt maturity profile",
+          "No macroeconomic or sector\u2011specific risk factors provided",
+          "Historical price alone does not capture future volatility"
+        ],
+        "reasoning": "The beta suggests MSFT moves in line with the market, implying moderate systematic risk. However, the debt\u2011to\u2011equity ratio is markedly high for a technology firm, indicating potential leverage risk. The price history shows significant downward movement, pointing to price volatility. Combining these factors, the overall risk is assessed as moderate, acknowledging that additional data could shift the assessment."
+      },
+      "momentum": {
+        "ticker": "MSFT",
+        "stance": "positive",
+        "evidence": [
+          "Current price (555.8) is above the 20\u2011day MA (530.96), 50\u2011day MA (515.34), and 200\u2011day MA (437.96), indicating a bullish trend across short, medium, and long horizons.",
+          "Price increased 4.9% over the last 20 days and 13.0% over the last 50 days, confirming upward momentum.",
+          "Average 20\u2011day volume is 24.1M shares, while the latest volume is 50.8M shares, a significant uptick that supports the price move."
+        ],
+        "assumptions": [],
+        "limitations": [
+          "Analysis is based solely on technical indicators; no fundamental or news data are considered.",
+          "Short\u2011term signals (20\u2011day) are more sensitive to recent price action, while longer\u2011term signals (50\u2011day, 200\u2011day) reflect broader trends."
+        ],
+        "reasoning": "The price sits well above all relevant moving averages, and both short\u2011term and medium\u2011term price changes are positive. Additionally, the volume spike relative to the 20\u2011day average suggests growing market participation. These aligned signals across multiple timeframes provide a coherent bullish momentum assessment for MSFT. No conflicting indicators are present, so the stance is positive."
+      },
+      "disagreement": {
+        "classification": "insufficient_evidence",
+        "conflicting_agents": [],
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ],
+        "explanation": "One or more agents could not reach an assessment due to insufficient evidence."
+      },
+      "confidence": {
+        "score": 80,
+        "level": "high",
+        "factors": [
+          "Insufficient agent assessments: -10",
+          "Evidence gaps: -10"
+        ],
+        "explanation": "Confidence reflects evidence completeness, agent coverage, execution reliability, and directional consistency. It does not predict returns and is not a probability."
+      },
+      "final_outlook": {
+        "ticker": "MSFT",
+        "outlook": "insufficient_evidence",
+        "confidence": 80,
+        "confidence_level": "high",
+        "rationale": "At least one directional agent lacks sufficient evidence.",
+        "disagreement": "insufficient_evidence",
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ]
+      },
+      "error": null
+    },
+    {
+      "case_id": "KO",
+      "ticker": "KO",
+      "scenario_category": "positive",
+      "started_at": "2026-11-05T09:38:55.757016",
+      "execution_reliable": true,
+      "assessment_validity": {
+        "valuation": true,
+        "risk": true,
+        "momentum": true
+      },
+      "outlook_consistent": true,
+      "agent_errors": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "valuation": {
+        "ticker": "KO",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "trailing_pe: 28.259586",
+          "price_to_book: 11.027973",
+          "enterprise_to_ebitda: 25.233"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No peer or sector benchmarks provided",
+          "No additional financial metrics or qualitative data available"
+        ],
+        "reasoning": "The supplied data includes only a few valuation ratios for Coca\u2011Cola. Without comparable figures from peers or sector averages, it is impossible to assess whether these ratios indicate a cheap or expensive valuation. Therefore, a reliable stance on the stock\u2019s value cannot be established based solely on the provided evidence."
+      },
+      "risk": {
+        "ticker": "KO",
+        "risk_level": "moderate",
+        "evidence": [
+          "beta 0.269 indicates low sensitivity to market movements",
+          "debt_to_equity 107.449 suggests high leverage",
+          "historical close prices ranged from ~66 to ~95 over the period, showing moderate price volatility"
+        ],
+        "assumptions": [
+          "Consumer Defensive sector typically has stable cash flows that can support higher leverage",
+          "Beta reflects only systematic risk, not company\u2011specific risk"
+        ],
+        "limitations": [
+          "No data on interest coverage, cash flow, or debt maturity profile",
+          "Price history alone does not capture all risk factors"
+        ],
+        "reasoning": "The low beta reduces systematic risk, but the very high debt\u2011to\u2011equity ratio introduces significant financial risk. In a defensive consumer sector, stable earnings may mitigate some leverage concerns, yet the elevated debt still elevates overall risk. Therefore a moderate risk assessment is appropriate."
+      },
+      "momentum": {
+        "ticker": "KO",
+        "stance": "positive",
+        "evidence": [
+          "Current close (95.80) is above the 20\u2011day MA (92.50), 50\u2011day MA (89.56), and 200\u2011day MA (81.77), indicating an uptrend.",
+          "Price increased 11.63% over the last 20 days and 5.16% over the last 50 days, showing recent upward momentum.",
+          "Average 20\u2011day volume is 17.44M and the latest volume is 27.08M, a 55% increase, suggesting higher participation."
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No fundamental or news data provided; analysis is purely technical.",
+          "Only short\u2011term and medium\u2011term indicators are available; longer\u2011term trend beyond 200\u2011day MA is not assessed."
+        ],
+        "reasoning": "The stock is trading above all relevant moving averages, has strong recent price gains, and higher volume, all of which are classic short\u2011term momentum signals. No conflicting indicators are present, so the evidence supports a positive stance."
+      },
+      "disagreement": {
+        "classification": "insufficient_evidence",
+        "conflicting_agents": [],
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ],
+        "explanation": "One or more agents could not reach an assessment due to insufficient evidence."
+      },
+      "confidence": {
+        "score": 80,
+        "level": "high",
+        "factors": [
+          "Insufficient agent assessments: -10",
+          "Evidence gaps: -10"
+        ],
+        "explanation": "Confidence reflects evidence completeness, agent coverage, execution reliability, and directional consistency. It does not predict returns and is not a probability."
+      },
+      "final_outlook": {
+        "ticker": "KO",
+        "outlook": "insufficient_evidence",
+        "confidence": 80,
+        "confidence_level": "high",
+        "rationale": "At least one directional agent lacks sufficient evidence.",
+        "disagreement": "insufficient_evidence",
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ]
+      },
+      "error": null
+    },
+    {
+      "case_id": "GOOGL",
+      "ticker": "GOOGL",
+      "scenario_category": "negative",
+      "started_at": "2026-11-05T09:39:54.400926",
+      "execution_reliable": true,
+      "assessment_validity": {
+        "valuation": true,
+        "risk": true,
+        "momentum": true
+      },
+      "outlook_consistent": true,
+      "agent_errors": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "valuation": {
+        "ticker": "GOOGL",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "trailing_pe: 15.0877285",
+          "price_to_book: 5.385863",
+          "enterprise_to_ebitda: 18.626"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No peer or sector benchmarks provided",
+          "No additional financial metrics supplied"
+        ],
+        "reasoning": "The available data includes only a few valuation ratios (trailing P/E, price-to-book, and enterprise-to-EBITDA). Without comparable figures from peers or sector averages, it is impossible to assess whether these ratios indicate a cheap or expensive valuation. Therefore, the evidence is insufficient to form a valuation stance."
+      },
+      "risk": {
+        "ticker": "GOOGL",
+        "risk_level": "high",
+        "evidence": [
+          "beta 1.226 indicates above-average market sensitivity",
+          "debt_to_equity 22.187 suggests significant leverage",
+          "historical close prices show frequent swings between ~280 and ~400"
+        ],
+        "assumptions": [
+          "debt_to_equity value represents a high leverage position"
+        ],
+        "limitations": [
+          "no industry benchmark for beta or debt-to-equity",
+          "no trend or volatility metrics derived from price history",
+          "no other financial ratios or qualitative factors"
+        ],
+        "reasoning": "The beta above 1 signals that the stock tends to move more than the market, increasing systematic risk. The debt-to-equity figure is markedly high, implying that the company relies heavily on debt financing, which can amplify financial risk. The price history demonstrates notable volatility, further indicating potential risk exposure. Combined, these factors point to a high overall risk level for the ticker."
+      },
+      "momentum": {
+        "ticker": "GOOGL",
+        "stance": "negative",
+        "evidence": [
+          "Current close ($288.93) is below the 20\u2011day ($324.07), 50\u2011day ($335.20), and 200\u2011day ($339.67) moving averages, indicating a short\u2011term bearish trend.",
+          "The 20\u2011day price change is -17.57% and the 50\u2011day change is -16.67%, confirming negative momentum over the past month and two months.",
+          "The latest volume (51.44M) exceeds the 20\u2011day average (36.49M), showing higher trading activity but not sufficient to offset the price decline."
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No fundamental or news data is considered.",
+          "Volume increase may not lead to a price reversal.",
+          "Only the supplied indicators are used; other market factors are unknown."
+        ],
+        "reasoning": "The price is well below all major moving averages and has declined sharply over the past 20 and 50 days, which are clear short\u2011term bearish signals. The longer\u2011term trend is also bearish because the price remains below the 200\u2011day MA. Although trading volume is higher than the 20\u2011day average, the price has not rebounded, suggesting that the volume spike has not reversed the negative momentum. Therefore, the overall momentum assessment is negative."
+      },
+      "disagreement": {
+        "classification": "insufficient_evidence",
+        "conflicting_agents": [],
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ],
+        "explanation": "One or more agents could not reach an assessment due to insufficient evidence."
+      },
+      "confidence": {
+        "score": 80,
+        "level": "high",
+        "factors": [
+          "Insufficient agent assessments: -10",
+          "Evidence gaps: -10"
+        ],
+        "explanation": "Confidence reflects evidence completeness, agent coverage, execution reliability, and directional consistency. It does not predict returns and is not a probability."
+      },
+      "final_outlook": {
+        "ticker": "GOOGL",
+        "outlook": "insufficient_evidence",
+        "confidence": 80,
+        "confidence_level": "high",
+        "rationale": "At least one directional agent lacks sufficient evidence.",
+        "disagreement": "insufficient_evidence",
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ]
+      },
+      "error": null
+    },
+    {
+      "case_id": "INTC",
+      "ticker": "INTC",
+      "scenario_category": "negative",
+      "started_at": "2026-11-05T09:40:58.139125",
+      "execution_reliable": true,
+      "assessment_validity": {
+        "valuation": true,
+        "risk": true,
+        "momentum": true
+      },
+      "outlook_consistent": true,
+      "agent_errors": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "valuation": {
+        "ticker": "INTC",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "price_to_book: 2.6925743",
+          "enterprise_to_ebitda: 16.853"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "trailing_pe missing",
+          "no peer or sector benchmarks provided"
+        ],
+        "reasoning": "The available data includes only the price\u2011to\u2011book and enterprise\u2011to\u2011EBITDA ratios. Without a trailing P/E, and without comparable industry or peer metrics, it is impossible to assess whether Intel\u2019s valuation is attractive, overvalued, or fair. Therefore, the evidence is insufficient to form a valuation stance."
+      },
+      "risk": {
+        "ticker": "INTC",
+        "risk_level": "high",
+        "evidence": [
+          "beta 2.426 indicates high market sensitivity",
+          "debt_to_equity 38.108 indicates high leverage relative to typical tech peers",
+          "price history shows volatility from ~35 to ~140 over the period"
+        ],
+        "assumptions": [
+          "beta reflects market risk only, not company\u2011specific risk",
+          "debt\u2011to\u2011equity is interpreted relative to industry norms",
+          "price volatility is a proxy for risk but not comprehensive"
+        ],
+        "limitations": [
+          "no earnings, cash flow, or industry context data",
+          "beta and debt\u2011to\u2011equity may not capture all risk factors",
+          "trailing PE missing"
+        ],
+        "reasoning": "The supplied beta is well above 1, signalling strong sensitivity to market movements. The debt\u2011to\u2011equity ratio of 38.108 is extremely high for a technology company, implying significant leverage risk. Historical prices exhibit large swings, reinforcing the notion of volatility. Together, these indicators point to a high overall risk profile for the ticker."
+      },
+      "momentum": {
+        "ticker": "INTC",
+        "stance": "negative",
+        "evidence": [
+          "Current close ($58.27) is below the 20\u2011day MA ($88.24) and 50\u2011day MA ($99.39), indicating a short\u2011term downtrend.",
+          "Price fell 48.5% over the last 20 days and 33.4% over the last 50 days, showing sustained negative momentum.",
+          "Average 20\u2011day volume (131.5M) is lower than the latest volume (188.6M), but the price remains far below key moving averages."
+        ],
+        "assumptions": [
+          "Moving averages are relevant trend indicators for this stock.",
+          "Volume increase may signal short\u2011term interest but does not offset the strong negative price trend."
+        ],
+        "limitations": [
+          "No fundamental data or news catalysts are provided.",
+          "Only a limited set of technical indicators is available.",
+          "Short\u2011term volume spike could be temporary and not indicative of a reversal."
+        ],
+        "reasoning": "The stock\u2019s price is well below its 20\u2011 and 50\u2011day moving averages and has experienced large negative price changes over the past 20 and 50 days, indicating strong short\u2011term bearish momentum. While the latest volume is higher than the 20\u2011day average, the price remains far below key trend levels, so the overall momentum assessment is negative."
+      },
+      "disagreement": {
+        "classification": "insufficient_evidence",
+        "conflicting_agents": [],
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ],
+        "explanation": "One or more agents could not reach an assessment due to insufficient evidence."
+      },
+      "confidence": {
+        "score": 75,
+        "level": "moderate",
+        "factors": [
+          "Missing market fields: -5",
+          "Insufficient agent assessments: -10",
+          "Evidence gaps: -10"
+        ],
+        "explanation": "Confidence reflects evidence completeness, agent coverage, execution reliability, and directional consistency. It does not predict returns and is not a probability."
+      },
+      "final_outlook": {
+        "ticker": "INTC",
+        "outlook": "insufficient_evidence",
+        "confidence": 75,
+        "confidence_level": "moderate",
+        "rationale": "At least one directional agent lacks sufficient evidence.",
+        "disagreement": "insufficient_evidence",
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ]
+      },
+      "error": null
+    },
+    {
+      "case_id": "META",
+      "ticker": "META",
+      "scenario_category": "neutral",
+      "started_at": "2026-11-05T09:41:56.149532",
+      "execution_reliable": true,
+      "assessment_validity": {
+        "valuation": true,
+        "risk": true,
+        "momentum": true
+      },
+      "outlook_consistent": true,
+      "agent_errors": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "valuation": {
+        "ticker": "META",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "trailing_pe: 21.49",
+          "price_to_book: 5.91",
+          "enterprise_to_ebitda: 14.14"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No peer or sector benchmarks provided",
+          "No additional financial metrics or qualitative data available"
+        ],
+        "reasoning": "The available data includes only a few valuation ratios for Meta Platforms, Inc. Without comparable metrics from peers or sector averages, it is impossible to assess whether these ratios indicate a cheap or expensive valuation. Therefore, a reliable stance on the stock cannot be determined based solely on the supplied evidence."
+      },
+      "risk": {
+        "ticker": "META",
+        "risk_level": "high",
+        "evidence": [
+          "Beta of 1.279 indicates sensitivity above market average",
+          "Debt-to-equity ratio of 42.161 suggests very high leverage",
+          "Historical close prices range from ~524 to ~777, showing notable price swings",
+          "Recent price spikes (e.g., 777.59 on 2026-09-24) reflect volatility"
+        ],
+        "assumptions": [
+          "Interpreting debt-to-equity as a leverage indicator",
+          "Beta >1 is taken as higher market risk",
+          "Price range is used as a proxy for volatility"
+        ],
+        "limitations": [
+          "No industry benchmark for debt-to-equity",
+          "No cash flow or liquidity data",
+          "No debt maturity or covenant details",
+          "No forward-looking guidance"
+        ],
+        "reasoning": "The combination of a beta above 1, an extremely high debt-to-equity ratio, and a historical price range with significant swings indicates that the company is exposed to both market and financial leverage risk. These factors collectively point to a high overall risk level."
+      },
+      "momentum": {
+        "ticker": "META",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "Current price (630) is below the 20\u2011day MA (673.9) and 50\u2011day MA (673.4), indicating short\u2011term bearishness.",
+          "Price fell 12.66% over the last 20 days, reinforcing the short\u2011term negative signal.",
+          "Price rose 10.60% over the last 50 days, suggesting a longer\u2011term positive trend.",
+          "The 50\u2011day MA (673.4) is above the 200\u2011day MA (631.4), implying a longer\u2011term uptrend.",
+          "Current price is slightly below the 200\u2011day MA (631.4), a potential short\u2011term support level.",
+          "Average 20\u2011day volume is 24.38M, while the latest volume is 32.40M, indicating a volume spike that could precede a reversal."
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No additional momentum indicators (e.g., RSI, MACD) are provided.",
+          "No trendline or support/resistance analysis is available.",
+          "No fundamental or news context is supplied."
+        ],
+        "reasoning": "The short\u2011term indicators (price below short\u2011term MAs, 20\u2011day decline, higher volume) point to bearish momentum, whereas the longer\u2011term indicators (price above 50\u2011day MA, 50\u2011day gain, 50\u2011day MA above 200\u2011day MA) suggest bullish momentum. The conflicting signals mean there is insufficient evidence to confidently assign a positive or negative stance. Therefore, the stance is \"insufficient_evidence\"."
+      },
+      "disagreement": {
+        "classification": "insufficient_evidence",
+        "conflicting_agents": [],
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation",
+          "momentum"
+        ],
+        "explanation": "One or more agents could not reach an assessment due to insufficient evidence."
+      },
+      "confidence": {
+        "score": 70,
+        "level": "moderate",
+        "factors": [
+          "Insufficient agent assessments: -20",
+          "Evidence gaps: -10"
+        ],
+        "explanation": "Confidence reflects evidence completeness, agent coverage, execution reliability, and directional consistency. It does not predict returns and is not a probability."
+      },
+      "final_outlook": {
+        "ticker": "META",
+        "outlook": "insufficient_evidence",
+        "confidence": 70,
+        "confidence_level": "moderate",
+        "rationale": "At least one directional agent lacks sufficient evidence.",
+        "disagreement": "insufficient_evidence",
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation",
+          "momentum"
+        ]
+      },
+      "error": null
+    },
+    {
+      "case_id": "JPM",
+      "ticker": "JPM",
+      "scenario_category": "neutral",
+      "started_at": "2026-11-05T09:42:59.123836",
+      "execution_reliable": true,
+      "assessment_validity": {
+        "valuation": true,
+        "risk": true,
+        "momentum": true
+      },
+      "outlook_consistent": true,
+      "agent_errors": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "valuation": {
+        "ticker": "JPM",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "trailing_pe: 14.17512",
+          "price_to_book: 2.6615117"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No peer or sector benchmarks provided",
+          "Missing key valuation metrics such as enterprise_to_ebitda and debt_to_equity"
+        ],
+        "reasoning": "The available data includes only JPM\u2019s trailing P/E and price-to-book ratios. Without comparable benchmarks or additional financial metrics, it is impossible to assess whether these figures indicate a cheap or expensive valuation. Therefore, the evidence is insufficient to form a valuation stance."
+      },
+      "risk": {
+        "ticker": "JPM",
+        "risk_level": "insufficient_evidence",
+        "evidence": [
+          "beta 1.02 indicates market sensitivity",
+          "debt_to_equity data missing",
+          "historical close prices show price movements but no volatility metrics"
+        ],
+        "assumptions": [
+          "beta reflects sensitivity to market movements"
+        ],
+        "limitations": [
+          "lack of debt-to-equity and other leverage metrics",
+          "historical price data alone does not quantify future risk"
+        ],
+        "reasoning": "The available evidence includes a beta of 1.02, which suggests the stock moves roughly in line with the market, and a long series of daily closing prices. However, key risk indicators such as debt-to-equity are missing, and the price history does not provide a clear measure of volatility or other risk factors. Without these metrics, a reliable risk assessment cannot be made, so the appropriate classification is insufficient evidence."
+      },
+      "momentum": {
+        "ticker": "JPM",
+        "stance": "positive",
+        "evidence": [
+          "Current close (352.11) is above 20\u2011day MA (336.66), 50\u2011day MA (341.64), and 200\u2011day MA (320.90), indicating short\u2011term bullish trend.",
+          "20\u2011day price change is +6.84%, showing recent upward momentum.",
+          "Average 20\u2011day volume is 7.14M and latest volume is 10.38M, a volume increase that supports the price move."
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No fundamental or catalyst information provided; analysis based solely on supplied technical indicators."
+        ],
+        "reasoning": "The price sits above all major moving averages and has gained 6.84% over the past 20 days, while volume has risen, signaling strong short\u2011term momentum. The 50\u2011day change is slightly negative but small relative to the overall trend, so it does not override the bullish signals. Therefore, the evidence supports a positive momentum stance."
+      },
+      "disagreement": {
+        "classification": "insufficient_evidence",
+        "conflicting_agents": [],
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation",
+          "risk"
+        ],
+        "explanation": "One or more agents could not reach an assessment due to insufficient evidence."
+      },
+      "confidence": {
+        "score": 60,
+        "level": "moderate",
+        "factors": [
+          "Missing market fields: -10",
+          "Insufficient agent assessments: -20",
+          "Evidence gaps: -10"
+        ],
+        "explanation": "Confidence reflects evidence completeness, agent coverage, execution reliability, and directional consistency. It does not predict returns and is not a probability."
+      },
+      "final_outlook": {
+        "ticker": "JPM",
+        "outlook": "insufficient_evidence",
+        "confidence": 60,
+        "confidence_level": "moderate",
+        "rationale": "At least one directional agent lacks sufficient evidence.",
+        "disagreement": "insufficient_evidence",
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation",
+          "risk"
+        ]
+      },
+      "error": null
+    },
+    {
+      "case_id": "NVDA",
+      "ticker": "NVDA",
+      "scenario_category": "insufficient_evidence",
+      "started_at": "2026-11-05T09:43:59.541241",
+      "execution_reliable": true,
+      "assessment_validity": {
+        "valuation": true,
+        "risk": true,
+        "momentum": true
+      },
+      "outlook_consistent": true,
+      "agent_errors": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "valuation": {
+        "ticker": "NVDA",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "enterprise_to_ebitda 23.847",
+          "market_cap 4832539181056.0",
+          "trailing_pe missing",
+          "price_to_book missing"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "Missing key valuation ratios (trailing_pe, price_to_book)",
+          "No peer or sector benchmarks provided",
+          "No historical or forward guidance data"
+        ],
+        "reasoning": "The only available valuation metric is enterprise_to_ebitda of 23.847, but without comparable industry or peer data, and with missing trailing_pe and price_to_book, it is impossible to assess whether NVDA is undervalued, fairly valued, or overvalued. Therefore, the evidence is insufficient to form a valuation stance."
+      },
+      "risk": {
+        "ticker": "NVDA",
+        "risk_level": "high",
+        "evidence": [
+          "beta 2.247 indicates high market sensitivity",
+          "debt-to-equity 16.971 indicates high leverage",
+          "historical price data shows significant daily swings"
+        ],
+        "assumptions": [
+          "beta reflects systematic market risk",
+          "debt-to-equity ratio signals leverage exposure",
+          "price volatility is a proxy for risk"
+        ],
+        "limitations": [
+          "no industry\u2011specific context for leverage",
+          "missing valuation metrics (P/E, P/B)",
+          "no cash flow or liquidity data"
+        ],
+        "reasoning": "The beta of 2.247 suggests the stock is more volatile than the market, and the debt\u2011to\u2011equity ratio of 16.971 is exceptionally high, implying substantial leverage. Combined with observable price swings in the historical data, these factors point to a high overall risk profile. However, the assessment is limited by the absence of industry benchmarks and additional financial metrics."
+      },
+      "momentum": {
+        "ticker": "NVDA",
+        "stance": "negative",
+        "evidence": [
+          "current_close (200.13) is below MA20 (216.12), MA50 (221.15), and MA200 (204.39)",
+          "price_change_20d_pct is -15.72% indicating a steep recent decline",
+          "price_change_50d_pct is -5.96% indicating a moderate decline over 50 days",
+          "latest_volume (148.3M) exceeds average_volume_20d (103.5M) suggesting increased activity but not enough to offset price trend"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "Only price, moving averages, and volume data provided; no other technical or fundamental indicators"
+        ],
+        "reasoning": "The price is below all short\u2011term and medium\u2011term moving averages and has declined sharply over the past 20 and 50 days, signaling a bearish short\u2011term and longer\u2011term trend. Although volume has risen, the price remains below key averages, so the overall momentum is negative."
+      },
+      "disagreement": {
+        "classification": "insufficient_evidence",
+        "conflicting_agents": [],
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ],
+        "explanation": "One or more agents could not reach an assessment due to insufficient evidence."
+      },
+      "confidence": {
+        "score": 70,
+        "level": "moderate",
+        "factors": [
+          "Missing market fields: -10",
+          "Insufficient agent assessments: -10",
+          "Evidence gaps: -10"
+        ],
+        "explanation": "Confidence reflects evidence completeness, agent coverage, execution reliability, and directional consistency. It does not predict returns and is not a probability."
+      },
+      "final_outlook": {
+        "ticker": "NVDA",
+        "outlook": "insufficient_evidence",
+        "confidence": 70,
+        "confidence_level": "moderate",
+        "rationale": "At least one directional agent lacks sufficient evidence.",
+        "disagreement": "insufficient_evidence",
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ]
+      },
+      "error": null
+    },
+    {
+      "case_id": "AMZN",
+      "ticker": "AMZN",
+      "scenario_category": "insufficient_evidence",
+      "started_at": "2026-11-05T09:45:00.775132",
+      "execution_reliable": false,
+      "assessment_validity": {
+        "valuation": true,
+        "risk": true,
+        "momentum": false
+      },
+      "outlook_consistent": true,
+      "agent_errors": {
+        "valuation": null,
+        "risk": null,
+        "momentum": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m6mnqbcheb7af128nees7v98` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6833, Requested 1191. Please try again in 180ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      "valuation": {
+        "ticker": "AMZN",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "market_cap: 2876619096064.0",
+          "missing_fields: enterprise_to_ebitda, price_to_book, trailing_pe"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No valuation ratios or financial metrics provided",
+          "No peer or sector benchmarks available"
+        ],
+        "reasoning": "The available data includes only the market capitalization and a list of missing valuation fields. Without any valuation ratios or comparable benchmarks, it is impossible to assess whether Amazon\u2019s stock is overvalued, undervalued, or fairly priced. Therefore, the evidence is insufficient to form a valuation stance."
+      },
+      "risk": {
+        "ticker": "AMZN",
+        "risk_level": "high",
+        "evidence": [
+          "beta 1.503 indicates higher market sensitivity",
+          "debt-to-equity 49.681 indicates high leverage",
+          "price history shows significant volatility"
+        ],
+        "assumptions": [
+          "Beta reflects market risk only, not total risk",
+          "Debt-to-equity ratio interpreted as high leverage relative to industry norms"
+        ],
+        "limitations": [
+          "Missing valuation metrics (enterprise_to_ebitda, price_to_book, trailing_pe) limit assessment",
+          "Historical price variability is not predictive of future risk"
+        ],
+        "reasoning": "The supplied beta of 1.503 suggests the stock is more volatile than the market, and the debt-to-equity ratio of 49.681 indicates substantial leverage. Combined with the observed price swings in the historical data, these factors point to a higher overall risk profile. However, the absence of key valuation metrics and the fact that historical volatility does not guarantee future performance introduce uncertainty, leading to a cautious classification of high risk."
+      },
+      "momentum": null,
+      "disagreement": {
+        "classification": "agent_failure",
+        "conflicting_agents": [],
+        "failed_agents": [
+          "momentum"
+        ],
+        "evidence_gaps": [
+          "valuation"
+        ],
+        "explanation": "One or more agents failed during execution: momentum"
+      },
+      "confidence": {
+        "score": 45,
+        "level": "low",
+        "factors": [
+          "Missing market fields: -15",
+          "Insufficient agent assessments: -20",
+          "Agent execution failures: -20"
+        ],
+        "explanation": "Confidence reflects evidence completeness, agent coverage, execution reliability, and directional consistency. It does not predict returns and is not a probability."
+      },
+      "final_outlook": {
+        "ticker": "AMZN",
+        "outlook": "insufficient_evidence",
+        "confidence": 45,
+        "confidence_level": "low",
+        "rationale": "At least one directional agent failed during execution. A reliable directional outlook cannot be established.",
+        "disagreement": "agent_failure",
+        "failed_agents": [
+          "momentum"
+        ],
+        "evidence_gaps": [
+          "valuation"
+        ]
+      },
+      "error": null
+    },
+    {
+      "case_id": "TSLA",
+      "ticker": "TSLA",
+      "scenario_category": "insufficient_evidence",
+      "started_at": "2026-11-05T09:45:55.662698",
+      "execution_reliable": true,
+      "assessment_validity": {
+        "valuation": true,
+        "risk": true,
+        "momentum": true
+      },
+      "outlook_consistent": true,
+      "agent_errors": {
+        "valuation": null,
+        "risk": null,
+        "momentum": null
+      },
+      "valuation": {
+        "ticker": "TSLA",
+        "stance": "insufficient_evidence",
+        "evidence": [
+          "market_cap: 1522552143872.0",
+          "missing_fields: enterprise_to_ebitda, price_to_book, trailing_pe"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "No trailing PE, price-to-book, or enterprise-to-EBITDA data available to assess valuation"
+        ],
+        "reasoning": "Without any valuation ratios or comparable metrics, it is impossible to determine whether Tesla\u2019s stock is overvalued, undervalued, or fairly priced. The absence of these key data points means relative valuation cannot be established reliably. Therefore, the evidence is insufficient to form a stance on the stock\u2019s valuation."
+      },
+      "risk": {
+        "ticker": "TSLA",
+        "risk_level": "high",
+        "evidence": [
+          "beta 1.743 indicates high market sensitivity",
+          "debt-to-equity 18.295 indicates high leverage",
+          "price history shows significant volatility"
+        ],
+        "assumptions": [
+          "beta reflects systematic risk",
+          "debt-to-equity indicates leverage",
+          "price volatility reflects risk"
+        ],
+        "limitations": [
+          "missing valuation metrics (enterprise_to_ebitda, price_to_book, trailing_pe)",
+          "no cash flow or profitability data",
+          "no industry benchmark context",
+          "no macroeconomic factors"
+        ],
+        "reasoning": "The supplied beta of 1.743 suggests the stock is more volatile than the market, while a debt-to-equity ratio of 18.295 signals very high leverage. The historical price series demonstrates frequent large swings, reinforcing the perception of elevated risk. In the absence of additional financial metrics or industry context, these indicators collectively point to a high risk assessment."
+      },
+      "momentum": {
+        "ticker": "TSLA",
+        "stance": "positive",
+        "evidence": [
+          "Current close above 20\u2011day MA indicates short\u2011term bullish trend.",
+          "Current close above 50\u2011day MA indicates medium\u2011term bullish trend.",
+          "Current close above 200\u2011day MA indicates long\u2011term bullish trend.",
+          "20\u2011day price change of +1.95% shows recent upward momentum.",
+          "50\u2011day price change of +9.98% shows sustained upward momentum.",
+          "Latest volume 47.7M exceeds 20\u2011day average 37.4M, indicating increased buying interest."
+        ],
+        "assumptions": [],
+        "limitations": [],
+        "reasoning": "All supplied indicators point to a bullish momentum picture: the price sits above all moving averages, recent price gains are positive over both 20\u2011 and 50\u2011day horizons, and trading volume is higher than the recent average, reinforcing the upward trend. No conflicting signals are present, so the evidence supports a positive stance."
+      },
+      "disagreement": {
+        "classification": "insufficient_evidence",
+        "conflicting_agents": [],
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ],
+        "explanation": "One or more agents could not reach an assessment due to insufficient evidence."
+      },
+      "confidence": {
+        "score": 65,
+        "level": "moderate",
+        "factors": [
+          "Missing market fields: -15",
+          "Insufficient agent assessments: -10",
+          "Evidence gaps: -10"
+        ],
+        "explanation": "Confidence reflects evidence completeness, agent coverage, execution reliability, and directional consistency. It does not predict returns and is not a probability."
+      },
+      "final_outlook": {
+        "ticker": "TSLA",
+        "outlook": "insufficient_evidence",
+        "confidence": 65,
+        "confidence_level": "moderate",
+        "rationale": "At least one directional agent lacks sufficient evidence.",
+        "disagreement": "insufficient_evidence",
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ]
+      },
+      "error": null
+    }
+  ]
+}

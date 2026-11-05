@@ -1,0 +1,115 @@
+{
+  "evaluation_type": "manual_review",
+  "scoring_scale": "0-5",
+  "cases": [
+    {
+      "case_id": "AAPL",
+      "ticker": "AAPL",
+      "scenario_category": "positive",
+      "expected_evidence_requirements": {
+        "valuation": [
+          "P/E and P/B indicate valuation sensitivity"
+        ],
+        "risk": [
+          "Beta indicates moderate market sensitivity"
+        ],
+        "momentum": [
+          "Price above MA20, MA50, and MA200; positive 20d and 50d returns"
+        ]
+      },
+      "evaluation_notes": {
+        "acceptable_conclusions": [
+          "Constructive historical momentum with valuation caution"
+        ],
+        "unacceptable_claims": [
+          "Guaranteed future appreciation",
+          "Undocumented peer valuation claims"
+        ],
+        "limitations_to_acknowledge": [
+          "No peer benchmarks or forward earnings estimates"
+        ]
+      },
+      "agent_outputs": {
+        "valuation": {
+          "ticker": "AAPL",
+          "stance": "insufficient_evidence",
+          "evidence": [
+            "trailing_pe: 38.920937",
+            "price_to_book: 45.314407",
+            "enterprise_to_ebitda: 29.755"
+          ],
+          "assumptions": [],
+          "limitations": [
+            "No peer or sector benchmarks provided",
+            "No additional financial metrics or historical data supplied"
+          ],
+          "reasoning": "The available data includes only a few valuation ratios for Apple Inc. Without comparable metrics from peers or sector averages, it is impossible to assess whether these ratios indicate a cheap or expensive valuation. Therefore, a reliable stance on the stock\u2019s value cannot be established based solely on the supplied evidence."
+        },
+        "risk": {
+          "ticker": "AAPL",
+          "risk_level": "moderate",
+          "evidence": [
+            "beta 1.089 indicates moderate market sensitivity",
+            "debt_to_equity 71.468 suggests high leverage",
+            "historical close prices range from ~246 to ~350 indicating moderate price volatility"
+          ],
+          "assumptions": [
+            "Interpreting debt_to_equity as a high leverage ratio relative to typical equity levels",
+            "Assuming beta reflects sensitivity to market movements"
+          ],
+          "limitations": [
+            "No industry benchmark for debt-to-equity provided",
+            "No information on debt maturity, cash flow, or earnings",
+            "Price history limited to recent dates, no long\u2011term trend analysis"
+          ],
+          "reasoning": "The beta of 1.089 shows the stock moves slightly more than the market, implying moderate systematic risk. The debt-to-equity ratio of 71.468 is unusually high, indicating significant leverage and potential financial risk. Historical price data shows a price swing of roughly 40% over the period, which is moderate volatility. Combining these factors suggests a moderate overall risk level, but the lack of broader financial context and industry comparison limits certainty."
+        },
+        "momentum": {
+          "ticker": "AAPL",
+          "stance": "positive",
+          "evidence": [
+            "Current close (349.51) is above 20\u2011day MA (342.91), 50\u2011day MA (334.84), and 200\u2011day MA (297.58), indicating short\u2011term and medium\u2011term bullish trend",
+            "20\u2011day price change is +3.81% and 50\u2011day price change is +12.78%, showing recent upward momentum",
+            "Average 20\u2011day volume is 46.3M while latest volume is 89.5M, a significant volume spike supporting the price move"
+          ],
+          "assumptions": [],
+          "limitations": [
+            "Only moving\u2011average, price\u2011change, and volume indicators are available; no other technical or fundamental data",
+            "No information on market news or catalysts that could explain the volume spike"
+          ],
+          "reasoning": "All supplied indicators point to a bullish short\u2011term and medium\u2011term momentum for AAPL. The price is above key moving averages, recent returns are positive, and volume has increased sharply, reinforcing the upward trend. No conflicting signals are present, so the stance is positive."
+        }
+      },
+      "final_outlook": {
+        "ticker": "AAPL",
+        "outlook": "insufficient_evidence",
+        "confidence": 80,
+        "confidence_level": "high",
+        "rationale": "At least one directional agent lacks sufficient evidence.",
+        "disagreement": "insufficient_evidence",
+        "failed_agents": [],
+        "evidence_gaps": [
+          "valuation"
+        ]
+      },
+      "automated_checks": {
+        "execution_reliable": true,
+        "assessment_validity": {
+          "valuation": true,
+          "risk": true,
+          "momentum": true
+        },
+        "outlook_consistent": false
+      },
+      "manual_scores": {
+        "evidence_grounding": null,
+        "unsupported_claims": null,
+        "analytical_defensibility": null,
+        "limitation_acknowledgment": null,
+        "outlook_consistency": null
+      },
+      "reviewer_justification": "",
+      "critical_failure": false
+    }
+  ]
+}
