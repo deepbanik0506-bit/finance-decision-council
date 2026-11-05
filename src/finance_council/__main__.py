@@ -22,6 +22,9 @@ def main():
             "disagreement": None,
             "confidence": None,
             "final_outlook": None,
+            "valuation_error": None,
+            "risk_error": None,
+            "momentum_error": None,
         }
 
         result = build_council_graph().invoke(initial_state)
